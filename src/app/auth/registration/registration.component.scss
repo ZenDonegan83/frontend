@@ -1,0 +1,142 @@
+/*.palel-primary {
+    border-color: #bce8f1;
+}
+*/
+
+.register-bg{
+     background-image: url('../../../assets/img/inkdstry-bg.png');
+      background-size: cover;
+       min-height: 100vh;
+     background-repeat: no-repeat;
+     background-position: center;
+     overflow: hidden;
+     position: relative;
+ }
+ .sub-txt{
+     font: normal normal 300 20px/41px Nunito Sans;
+     letter-spacing: 0.2px;
+     color: #FFFFFF;
+     opacity: 1;
+     position: relative;
+     bottom: 16px;
+ }
+ .panel-primary > .panel-heading {
+     background-color: currentcolor;
+ }
+ .panel{
+     background-color:unset!important;
+ }
+ .logo-pos img{
+     padding:40px 50px 20px;
+ }
+ .login-speape2 {
+     position: absolute;
+     top: 35%;
+     right: -45px;
+ }
+ .login-speape {
+     position: absolute;
+     bottom: -150px;
+     left: -143px;
+ }
+ .panel-primary > .panel-body {
+     border-radius: 20px;
+     // background: radial-gradient(black, transparent);
+ }
+ .head-text h2{
+     display:flex;
+     font: normal normal bold 55px/61px Nunito Sans;
+     letter-spacing: 0px;
+     color: #78EF30;
+     text-transform: capitalize;
+     opacity: 1;
+ }
+ .pos-set {
+     display: flex;
+     justify-content: center;
+     position: relative;
+     bottom: 40px;
+ }
+ // .reg-form{
+ //     position:relative;
+ //     top:85px;
+ // }
+ .submit-btn {
+     font-size: 14px;
+     font-weight: 700;
+     color: #000;
+     text-align: center;
+     text-transform: uppercase;
+     display: inline-block;
+     padding: 10px 80px;
+     background-color: #78EF30;
+     border-radius: 30px;
+     border: none;
+     box-shadow: #78ef30 -1px 1px 26px 5px;
+     margin-top: 15px;
+     width:100%;
+ }
+  
+  
+ .panel-primary {
+     border:unset;
+ }
+ 
+ 
+ // .resister-bgcol {
+ //   opacity: 0.6; 
+ //   min-height: 100vh;
+ // }
+ .resister-bgcol :hover{
+     opacity:unset;
+ }
+ /*linear-gradient(to bottom,#FB4060 0%,#BB0500 )*/
+ 
+ .inputstyl{
+     font-size: 12px;
+     font-weight: 400;
+     color: #fff;
+     display: block;
+     padding: 12px 55px;
+     border: 1px solid #fff;
+     border-radius: 30px;
+     outline: none;
+     background-color: transparent;
+     width: 100%;
+     margin-bottom: 20px;
+ }
+ .profile{
+     background-image: url('../../../assets/img/user.png');
+  
+     background-repeat: no-repeat;
+     background-position: 12% 50%;
+ }
+ .email{
+     background-image: url('../../../assets/img/mail.png');
+     background-repeat: no-repeat;
+     background-position: 12% 50%;
+ }
+ .phone{
+     background-image: url('../../../assets/img/phone.png');
+     background-repeat: no-repeat;
+     background-position: 12% 50%;
+ }
+ .pass{
+     background-image: url('../../../assets/img/password.png');
+     background-repeat: no-repeat;
+     background-position: 12% 50%;
+ }
+ .already-txt{
+     padding-left: 6px;
+     font: normal normal 300 14px/15px Nunito Sans;
+ letter-spacing: 0.2px;
+ color: #FFFFFF;
+ opacity: 1;
+ }
+ .login-txt{
+     padding-left: 6px;
+     font: normal normal 300 14px/15px Nunito Sans;
+ letter-spacing: 0.2px;
+ color: #78EF30;
+ opacity: 1;
+ }

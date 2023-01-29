@@ -1,0 +1,229 @@
+{
+  "login": {
+    "title": "<span>Welcome<span> Back",
+    "sub_title": "Please Login to continue",
+    "login_form": {
+      "username": "Username",
+      "error_username": "Invalid User Name",
+      "password": "Password",
+      "error_password": "Invalid Password",
+      "btn_signin": "Sign In"
+    },
+    "forget": "Forgot Password"
+  },
+  "registration": {
+    "title": "Register",
+    "sub_title": "Please enter detail to register",
+    "register_form": {
+      "username": "Username",
+      "error_username": "Invalid User Name",
+      "firstname": "First Name",
+      "error_firstname": "Invalid First Name",
+      "lastname": "Last Name",
+      "error_lastname": "Invalid Last Name",
+      "email": "Email",
+      "error_email": "Invalid Email",
+      "telephone": "Telephone",
+      "error_telephone": "Invalid Telephone",
+      "password": "Password",
+      "error_password": "Invalid Password",
+      "btn_register": "Register"
+    },
+    "forget": "<span class=\"already-txt\"> Already here an account?</span> <span [routerLink]=\"['/login']\" class=\"login-txt\">Login</span> "
+  },
+  "dashboard": {
+    "cards": {
+      "total_clients": "Total Clients",
+      "total_tattoos": "Total Tattoos",
+      "cancellations": "Cancellations",
+      "total_earning": "Total Earnings"
+    },
+    "hours_tattooed": "Hours Tattooed",
+    "monthly_report_status": [
+      "Lowest",
+      "Highest"
+    ],
+    "customer_reports_status": [
+      "no shows",
+      "cancellations",
+      "completed"
+    ],
+    "client_report_status": [
+      "Returning Clients",
+      "New Clients"
+    ],
+    "hours_tattooed_reports": "Hours Tattooed",
+    "client_report": "Client Report Status",
+    "filter_month": "Monthly",
+    "filter_weekly": "Weekly",
+    "filter_yearly": "Yearly",
+    "artist_list": {
+      "title": "Artist List",
+      "grid_columns": [
+        "Artist",
+        "Started",
+        "Hours",
+        "tattoos",
+        "Earned",
+        "View"
+      ]
+    }
+  },
+  "main_nav": [
+    "Dashboard",
+    "Schedule",
+    "Clients",
+    "Artist",
+    "Templates"
+  ],
+  "actions" : [
+    "View",
+    "Edit",
+    "Delete"
+  ],
+  "user_dropdown": [
+    "Profile",
+    "Billing",
+    "Support",
+    "Logout"
+  ],
+  "scheduler": {
+    "btn_add": "Add New Events",
+    "filters": [
+      "Month",
+      "Week",
+      "Day"
+    ]
+  },
+  "delete_dialog": {
+    "message": "Are You Sure Want To Delete?",
+    "btn_confirm": "Yes"
+  },
+  "clients_listing": {
+    "title": "Clients Listing",
+    "btn_add": "Add New Client",
+    "grid_columns": [
+      "First Name",
+      "Last Name",
+      "Email",
+      "Contact Number",
+      "Action"
+    ]
+  },
+  "add_client": {
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "password" : "Password",
+    "btn_save": "Save"
+  },
+  "client_detail": {
+    "card_labels": [
+      "Name",
+      "Email",
+      "Phone",
+      "City",
+      "State",
+      "Next Appointment"
+    ],
+    "client_history": {
+      "title" : "Clients history",
+      "btn_download": "Download PDF",
+      "grid_columns": [
+        "Appointment Date",
+        "Time",
+        "Duration",
+        "Appointment Fees",
+        "Action"
+      ]
+    }
+  },
+  "artist_listing": {
+    "title": "Artist Listing",
+    "btn_add": "Add New Artist",
+    "grid_columns": [
+      "Username",
+      "First Name",
+      "Last Name",
+      "Email",
+      "Action"
+    ]
+  },
+  "add_artist": {
+    "title": "Add Artist Detail",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "user_name": "Username",
+    "telephone" : "Telephone",
+    "role": "Role",
+    "email": "Email",
+    "password": "Password",
+    "btn_submit": "Submit"
+  },
+  "templates": {
+    "btn_actions": [
+      "Edit",
+      "Delete",
+      "Deactivate"
+    ]
+  },
+  "profile": [
+    "Name",
+    "Username",
+    "Phone",
+    "Email"
+  ],
+  "billing_history": {
+    "listing_title": "Order History",
+    "grid_columns": [
+      "Date",
+      "Type",
+      "Receipt"
+    ],
+    "btn_download": "Download",
+    "plan_card": {
+      "title": "Your Plan",
+      "sub_title": "Pro Annual",
+      "description": "Review on",
+      "btn_cancel": "Cancel Subscription",
+      "error_cancel_subscription": "Are You Sure You Want To Cancel? All Of Your Data Will Be Destroyed"
+    },
+    "payment_card": {
+      "title": "Payment Method",
+      "description": "Manage billing information and view recipes",
+      "btn_remove": "Remove"
+    }
+  },
+  "appointments_listing": {
+    "title": "Appointments This Month",
+    "grid_columns": [
+      "Artist",
+      "Customer Name",
+      "Phone",
+      "Date",
+      "Time",
+      "Action"
+    ]
+  },
+  "appointment_detail": {
+    "title": "Appointment Details",
+    "app_labels": [
+      "Artist",
+      "Client",
+      "Price",
+      "Date",
+      "Email",
+      "Images",
+      "Start_Time",
+      "End_Time",
+      "Tattoo Location"
+    ],
+    "app_status": [
+      "No Show",
+      "Cancelled",
+      "Consent_Validated"
+    ],
+    "btn_reschedule": "Reschedule"
+  },
+  "artist_detail" : {}
+}

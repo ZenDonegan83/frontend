@@ -1,0 +1,79 @@
+<div class="container-fluid">
+ 
+     <div class="row artist-header">
+       
+          <div class="col-md-12">
+               <div class="row">
+                    <div class="col-md-6">
+                         <div class="img-styl">
+
+                              <div class="form-group"  *ngIf="isSelected">
+                                <label class="upload-labal" for="file"><img class="img-profile"    src="assets/img/client-profile.png" alt=""></label>
+                                <input
+                                  id="file"
+                                  name="photo"
+                                  type="file"
+                                  class="form-control uploadFile"
+                                  (change)="onFileChange($event)">
+                              </div>
+                              <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
+                            </div>
+                            <img class="edit-profile" src="assets/img/edit-profile.png" alt="">
+                    </div>
+                    <div class="col-md-6">
+                             <!-- <img   src="assets/img/client-profile.png" alt=""> -->
+              <a   class="close-btn"  (click)="closeModal()">
+               <img   class="close-img" src="assets/img/close.png" alt="">
+             </a>
+                    </div>
+               </div>
+              
+         
+          </div>
+     </div>
+  
+     <form action=""  [formGroup]="clientForm" (ngSubmit)="addClient(clientForm)">
+          <div class="row">
+               <div class="col-md-2">
+            <p class="client-text">{{translation?.name}}</p>
+               </div>
+               <div class="col-md-10">
+                    <input type="text" formControlName="firstName" class="form-control artist-input" placeholder="Marry Lana">
+               </div>
+          </div>
+          <div class="row form-margin">
+           <div class="col-md-2">
+             <p class="client-text">{{translation?.phone}}</p>
+                </div>
+               <div class="col-md-10">
+                    <input type="text"  formControlName="tellNumber" class="form-control artist-input" placeholder="000-000-000">
+               </div>
+          </div>
+          <div class="row form-margin">
+           <div class="col-md-2">
+              <p class="client-text">{{translation?.email}}</p>
+                </div>
+               <div class="col-md-10">
+                    <input type="email" formControlName="email" class="form-control artist-input" placeholder="merrylana@gmail.com">
+               </div>
+          </div>
+          <div class="row form-margin">
+           <div class="col-md-2">
+              <p class="client-text">{{translation?.password}}</p>
+                </div>
+               <div class="col-md-10">
+                    <input type="password" formControlName="password" class="form-control artist-input" placeholder="********">
+               </div>
+          </div>
+   
+          <div class="row form-margin">
+               <div class="col-md-12">
+   
+       <button class="btn btn-default artist-btn" type="submit">{{translation?.btn_save}}</button>
+               </div>
+          </div>
+     </form>
+</div>
+ 
+ 
+    

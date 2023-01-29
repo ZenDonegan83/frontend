@@ -1,0 +1,229 @@
+{
+  "login": {
+    "title": "Willkommen zurück",
+    "sub_title": "Einloggen um fortzufahren",
+    "login_form": {
+      "username": "Nutzername",
+      "error_username": "ungültiger Benutzername",
+      "password": "Passwort",
+      "error_password": "ungültiges Passwort",
+      "btn_signin": "Anmelden"
+    },
+    "forget": "Passwort vergessen"
+  },
+  "registration": {
+    "title": "Registrieren",
+    "sub_title": "Bitte geben Sie Details ein, um sich zu registrieren",
+    "register_form": {
+      "username": "Benutzername",
+      "error_username": "ungültiger Benutzername",
+      "firstname": "Vorname",
+      "error_firstname": "ungültiger Vorname",
+      "lastname": "Nachname",
+      "error_lastname": "ungültiger Nachname",
+      "email": "Emailadresse",
+      "error_email": "ungültige Emailadresse",
+      "telephone": "Telefonnummer",
+      "error_telephone": "Invalid Telephone",
+      "password": "Passwort",
+      "error_password": "ungültige Telefonnummer",
+      "btn_register": "Registrieren"
+    },
+    "forget": "<span class=\"already-txt\"> Schon hier ein Konto?</span> <span [routerLink]=\"['/login']\" class=\"login-txt\">Anmeldung</span> "
+  },
+  "dashboard": {
+    "cards": {
+      "total_clients": "Kunden insgesamt",
+      "total_tattoos": "Tätowierungen insgesamt",
+      "cancellations": " Absagen",
+      "total_earning": "Gesamteinkommen"
+    },
+    "hours_tattooed": " Stunden tättowiert",
+    "monthly_report_status": [
+      "Niedrigste",
+      "Höchste"
+    ],
+    "customer_reports_status": [
+      "nicht erschienen",
+      "Absagen",
+      "beendet"
+    ],
+    "client_report_status": [
+      "Stammkunden",
+      "Neukunden"
+    ],
+    "hours_tattooed_reports": "Hours Tattooed",
+    "client_report": "Client Report Status",
+    "filter_month": "Monatlich",
+    "filter_weekly": "Wöchentlich",
+    "filter_yearly": "Jährlich",
+    "artist_list": {
+      "title": "Künstlerliste",
+      "grid_columns": [
+        "Künstler",
+        "Gestartet",
+        "Stunden",
+        "Tatowierungen",
+        "Verdient",
+        "Ansicht"
+      ]
+    }
+  },
+  "main_nav": [
+    "Dashboard",
+    " Zeitplan",
+    "Kunden",
+    "Künstler",
+    "Vorlagen"
+  ],
+  "actions" : [
+    "Sicht",
+    "Bearbeiten",
+    "Löschen"
+  ],
+  "user_dropdown": [
+    "Profile",
+    "Abbrechnungen",
+    "Support",
+    "Ausloggen"
+  ],
+  "scheduler": {
+    "btn_add": " Neue Ereignisse hinzufügen",
+    "filters": [
+      "Monat",
+      "Jahr",
+      "Tag"
+    ]
+  },
+  "delete_dialog": {
+    "message": "Möchten sie wirklich löschen?",
+    "btn_confirm": "Ja"
+  },
+  "clients_listing": {
+    "title": "Kundenliste",
+    "btn_add": "Neue Kunden hinzufügen",
+    "grid_columns": [
+      "Vorname",
+      "Nachname",
+      "Emailadresse",
+      "Kontaktnummer",
+      "Aktion"
+    ]
+  },
+  "add_client": {
+    "name": "Name",
+    "phone": "Telefonnummer",
+    "email": "Email",
+    "password" : "Passwort",
+    "btn_save": "Speichern"
+  },
+  "client_detail": {
+    "card_labels": [
+      "Name",
+      "Email",
+      "Telefonnummer",
+      "Stadt",
+      "Zustand",
+      "Nächster Termin"
+    ],
+    "client_history": {
+      "title" : "Kundengeschichte",
+      "btn_download": "PDF downloaden",
+      "grid_columns": [
+        " Termin",
+        "Zeit",
+        "Dauer",
+        "Appointment Fees",
+        "Aktion"
+      ]
+    }
+  },
+  "artist_listing": {
+    "title": "Künstlerdetails hinzufügen",
+    "btn_add": "Neuen Künstler hinzufügen",
+    "grid_columns": [
+      "Benutzername",
+      "Vorname",
+      "Nachname",
+      "Email",
+      "Aktion"
+    ]
+  },
+  "add_artist": {
+    "title": "Künstlerdetails hinzufügen",
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "user_name": "Benutzername",
+    "telephone": "Telefonnummer",
+    "role": " Rolle",
+    "email": "Emailadresse",
+    "password": "Password",
+    "btn_submit": "einreichen"
+  },
+  "templates": {
+    "btn_actions": [
+      "Bearbeiten",
+      "Löschen",
+      "Deactivate"
+    ]
+  },
+  "profile": [
+    "Name",
+    "Benutzername",
+    "Telefonnummer",
+    "Emailadresse"
+  ],
+
+  "billing_history": {
+    "listing_title": "Bestellverlauf",
+    "grid_columns": [
+      "Datum",
+      "Art",
+      "Bon"
+    ],
+    "btn_download": "Herunterladen",
+    "plan_card": {
+      "title": "Ihr Plan",
+      "sub_title": "Pro Annual",
+      "description": " Rezension zu",
+      "btn_cancel": "Abonnement kündigen",
+      "error_cancel_subscription": "Are You Sure You Want To Cancel? All Of Your Data Will Be Destroyed"
+    },
+    "payment_card": {
+      "title": " Zahlmethode",
+      "description": "Rechnungsinformationen und Rechnungen verwalten.",
+      "btn_remove": "Remove"
+    }
+  },
+  "appointments_listing": {
+    "title": " Termine in diesem Monat",
+    "grid_columns": [
+      "Künstler",
+      "Kundennname",
+      "Telefonnummer",
+      "Datum",
+      "Zeit",
+      "Aktion"
+    ]
+  },
+  "appointment_detail": {
+    "title": " Termindetails",
+    "app_labels": [
+      " Künstler",
+      "Kunde",
+      "Preis",
+      "Datum",
+      "Emailadresse",
+      "Bilder",
+      "Startzeit",
+      " Endzeit",
+      "Tattoo Location"
+    ],
+    "app_status": [
+      "nicht erschienen",
+      "abgebrochen",
+      "Consent_Validated"
+    ],
+    "btn_reschedule": "Reschedule"
+  }
+}

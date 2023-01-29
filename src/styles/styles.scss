@@ -1,0 +1,11 @@
+@import 'node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+.sidebar-wrapper{
+    background-color: unset!important;
+}
+
+.mat-dialog-container{
+    transform: none;
+    background: #302E2E 0% 0% no-repeat padding-box !important;
+    border-radius: 15px !important;
+    opacity: 1 !important;
+}

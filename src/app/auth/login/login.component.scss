@@ -1,0 +1,242 @@
+body {
+     height: 100%;
+     background-repeat: no-repeat;
+ }
+ .login-bg{ 
+     background-image: url('../../../assets/img/inkdstry-bg.png');
+      background-size: cover;
+       min-height: 100vh;
+     background-repeat: no-repeat;
+     background-position: center;
+     overflow: hidden;
+     position: relative;
+     }
+ .logo-pos img{
+     padding:40px 50px 20px;
+ }
+ .card-styl{
+     position:relative;
+     top:85px;
+ }
+ 
+ .login_box {
+     background: #f7f7f7;
+     border: 3px solid #F4F4F4;
+     padding-left: 15px;
+     margin-bottom: 25px;
+ }
+ 
+ .input_title {
+     color: rgba(164, 164, 164, 0.9);
+     padding-left: 3px;
+     margin-bottom: 2px;
+ }
+ 
+  
+ 
+  
+ .login_title .welcome-txt{
+     text-align: left;
+     font: normal normal bold 55px/61px Nunito Sans;
+     letter-spacing: 0px;
+     color: #78EF30;
+     text-transform: capitalize;
+     font-size: 55px;
+ }
+ .login_title .back-txt{
+     font: normal normal bold 55px/61px Nunito Sans;
+ letter-spacing: 0px;
+ color: #FFFFFF;
+ text-transform: capitalize;
+ font-size: 55px;
+ padding-left: 20px;
+ }
+ 
+ .card-container.card {
+     max-width: 400px;
+ }
+ 
+ .btn {
+     font-weight: 400;
+     height: 36px;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     user-select: none;
+     cursor: default;
+     border-radius: 0;
+  
+     margin-bottom: 10px;
+ }
+ 
+ /*
+  * Card component
+  */
+ .card {
+     background-color:transparent;
+     /* just in case there no content*/
+     // padding: 1px 25px 30px;
+     margin: 0 auto 25px;
+     margin-top: 15%x;
+     /* shadows and rounded borders */
+     -moz-border-radius: 2px;
+     -webkit-border-radius: 2px;
+     border-radius: 2px;
+     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+ }
+ 
+ .profile-img-card {
+     width: 96px;
+     height: 96px;
+     margin: 0 auto 10px;
+     display: block;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+ }
+ 
+ /*
+  * Form styles
+  */
+ .profile-name-card {
+     font-size: 16px;
+     font-weight: bold;
+     text-align: center;
+     margin: 10px 0 0;
+     min-height: 1em;
+ }
+ 
+ .form-signin{
+     position: relative;
+     z-index: 1000;
+ }
+ 
+ .form-signin #inputuser-name,
+ .form-signin #inputPassword {
+     direction: ltr;
+     height: 44px;
+     font-size: 16px;
+ }
+ 
+ .form-signin input[type=text],
+ .form-signin input[type=password],
+ .form-signin input[type=text] {
+     font-size: 12px;
+     font-weight: 400;
+     color: #fff;
+     display: block;
+     padding: 12px 55px;
+     border: 1px solid #fff;
+     border-radius: 30px;
+     outline: none;
+     background-color: transparent;
+     width: 100%;
+     margin-bottom: 20px;
+ }
+ 
+ .form-signin .form-control:focus {
+     border-color: rgb(104, 145, 162);
+     outline: 0;
+     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+ }
+ 
+ 
+ .btn.btn-signin:hover,
+ .btn.btn-signin:active,
+ .btn.btn-signin:focus {
+     background-color: rgb(12, 97, 33);
+ }
+ 
+ 
+ 
+  
+ .btn-primary {
+     border-color: darkgrey;
+     color: #fff;
+ }
+ 
+ .forgot-btn {
+     display: flex;
+     justify-content: end;
+     position: relative;
+     bottom: 20px;
+     cursor:pointer;
+ }
+ .signin-btn{
+     font-size: 12px;
+     font-weight: 700;
+     color: #000;
+     text-align: center;
+     text-transform: uppercase;
+     display: inline-block;
+     padding: 10px 80px;
+     background-color: #78EF30;
+     border-radius: 30px;
+     border: none;
+     box-shadow: #78ef30 -1px 1px 26px 5px;
+     margin-top: 15px;
+ }
+ .forgot-pass{
+     display:flex;
+     justify-content:left;
+  }
+  .plz-login{
+     font: normal normal 300 20px/41px Nunito Sans;
+     letter-spacing: 0.2px;
+     color: #FFFFFF;
+     opacity: 1;
+     position: relative;
+     bottom: 16px;
+  }
+ 
+  .login-speape2 {
+     position: absolute;
+     top: 35%;
+     right: -45px;
+ }
+ .login-speape {
+     position: absolute;
+     bottom: -150px;
+     left: -143px;
+ }
+ .img-fluid {
+     max-width: 100%;
+     height: auto;
+ }
+ .user-name input{
+ background-image: url(../../../assets/img/user.png);
+ background-repeat: no-repeat;
+ background-position: 20px;
+ }
+ .password input{
+ background-image: url(../../../assets/img/password.png);
+ background-repeat: no-repeat;
+ background-position: 20px;
+ }
+ .forgot-txt{
+     padding-left: 6px;
+     font: normal normal 300 14px/15px Nunito Sans;
+ letter-spacing: 0.2px;
+ color: #FFFFFF;
+ opacity: 1;
+ }
+ .forgot-pass img{
+     width: 12px;
+     height: 13px;
+ }
+ .forgot-pass {
+     font-size: 14px;
+     font-weight: 300;
+     text-transform: capitalize;
+     color: #fff;
+     position: relative;
+     top: 20px;
+     left: 10px;
+ }
+ .btn-primary:active:focus{
+ color: unset !important;
+ background-color: unset !important;
+ border: unset !important;
+ }

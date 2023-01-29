@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid" style="background: #000000!important;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" (click)="sidebarToggle()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" >{{getTitle()}}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown language-pos">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe" *ngIf="selectedLanguage === 'en'"><span  class="language-txt" >Eng</span></i>
+                        <i class="fa fa-globe" *ngIf="selectedLanguage === 'de'"><span  class="language-txt" >Ger</span></i>
+
+
+                        <b class="caret down-arrow"></b>
+                        <!-- <span class="notification hidden-sm hidden-xs">5</span> -->
+                        <!-- <p class="hidden-lg hidden-md">
+                            5 Notifications
+                            <b class="caret"></b>
+                        </p> -->
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let language of languages" (click)="changeLanguage(language.lang)"><a>{{language.label}}</a></li>
+                    </ul>
+                </li>
+
+
+
+                <!-- <li>
+                    <a href="#">
+                        Account
+                    </a>
+                </li> -->
+                <li  class="ball-pos">
+                    <a href="#" class="bell-icon">
+                        <img src="assets/img/bell-icon.png" alt="">
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="assets/img/Profile-nav.png" alt="">
+                        Hi, Zen
+                        <b class="caret"></b>
+
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a   routerLink="/profile">{{translation[0]}}</a></li>
+                        <li><a   routerLink="/Billing">{{translation[1]}}</a></li>
+                        <li><a  >{{translation[2]}}</a></li>
+                        <li><a  (click)="logout()">{{translation[3]}}</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="separator hidden-lg hidden-md"></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

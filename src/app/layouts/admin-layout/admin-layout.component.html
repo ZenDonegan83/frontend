@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="sidebar"  data-image="">
+      <app-sidenav></app-sidenav>
+      <div class="sidebar-background" ></div>
+  </div>
+
+  <div class="main-panel">
+      <app-toolbar></app-toolbar>
+      <router-outlet></router-outlet>
+      <div *ngIf="isMap('maps')">
+          <app-footer></app-footer>
+      </div>
+  </div>
+</div>
