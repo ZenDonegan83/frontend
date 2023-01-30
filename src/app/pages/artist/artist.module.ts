@@ -5,12 +5,16 @@ import { ArtistComponent } from './artist/artist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddArtistComponent } from "./add-artist/add-artist.component";
+import { ArtistSessionHistoryComponent } from "./artist-session-history/artist-session-history.component";
 
 
 
 @NgModule({
   declarations: [
     ArtistComponent,
+    AddArtistComponent,
+    ArtistSessionHistoryComponent
     ],
   imports: [
     CommonModule,

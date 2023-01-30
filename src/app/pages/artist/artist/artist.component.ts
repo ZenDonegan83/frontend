@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddArtistComponent } from "../../../modal-popups/add-artist/add-artist.component";
+import { AddArtistComponent } from "../add-artist/add-artist.component";
 import { DeleteComponent } from "../../../modal-popups/delete/delete.component";
 import { MatDialog } from "@angular/material/dialog";
 import { TranslationService } from "../../../core/services/transalation.service";

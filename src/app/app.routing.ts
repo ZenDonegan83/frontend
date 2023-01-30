@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './modal-popups/error/error.component';
 import { LayoutComponent } from "./pages/layout/layout.component";
 
 // ------------------- auth components ------------------

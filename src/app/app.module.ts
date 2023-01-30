@@ -5,9 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ErrorComponent } from "./error/error.component";
+import { ErrorComponent } from "./modal-popups/error/error.component";
 import { NavigationModule } from "./navigation/navigation.module";
-import { ModalPopupsModule } from "./modal-popups/modal-popups.module";
 import { LayoutComponent } from "./pages/layout/layout.component";
 import { AuthModule } from "./auth/auth.module";
 import { LayoutModule } from "./pages/layout/layout.module";
@@ -23,9 +22,6 @@ import { LayoutModule } from "./pages/layout/layout.module";
         NavigationModule,
         AuthModule,
         LayoutModule,
-
-        // ---- modal pop ups
-        ModalPopupsModule,
     ],
   declarations: [
     AppComponent,

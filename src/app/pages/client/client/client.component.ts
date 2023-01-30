@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { TranslationService } from "../../../core/services/transalation.service";
 import { DeleteComponent } from "../../../modal-popups/delete/delete.component";
-import { AddClientComponent } from "../../../modal-popups/add-client/add-client.component";
+import { AddClientComponent } from "../add-client/add-client.component";
 
 @Component({
   selector: 'app-client',

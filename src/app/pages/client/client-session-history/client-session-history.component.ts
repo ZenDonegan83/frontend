@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslationService} from "../../core/services/transalation.service";
-import {ApiService} from "../../core/services/api.service";
-import {DatePipe} from "@angular/common";
+import { TranslationService } from "../../../core/services/transalation.service";
+import { ApiService } from "../../../core/services/api.service";
+import { DatePipe } from "@angular/common";
 
 @Component({
-  selector: 'app-artist-session-history',
-  templateUrl: './artist-session-history.component.html',
-  styleUrls: ['./artist-session-history.component.scss']
+  selector: 'app-client-session-history',
+  templateUrl: './client-session-history.component.html',
+  styleUrls: ['./client-session-history.component.scss']
 })
-export class ArtistSessionHistoryComponent implements OnInit {
+export class ClientSessionHistoryComponent implements OnInit {
 
   q:any;
   itemsPerPage = 5;
   currentPage = 1;
   term:any;
-
-
 
 
   data = [

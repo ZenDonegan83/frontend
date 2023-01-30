@@ -1,13 +1,13 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {CalendarOptions, DateSelectArg, EventApi, EventClickArg} from "@fullcalendar/core";
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
-import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {ApiService} from "../../../core/services/api.service";
-import {AddEventComponent} from "../../../modal-popups/add-event/add-event.component";
+import { Router} from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { ApiService } from "../../../core/services/api.service";
+import { AddEventComponent } from "../add-event/add-event.component";
 
 
 @Component({
