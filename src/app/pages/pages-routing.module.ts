@@ -1,6 +1,6 @@
-import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from "../core/guards/auth.guard";
-import {NgModule} from "@angular/core";
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from "../core/guards/auth.guard";
+import { NgModule } from "@angular/core";
 
 
 const routes: Routes = [
@@ -25,22 +25,17 @@ const routes: Routes = [
         loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
     },
     {
-        path: 'Billing',
+        path: 'billing',
         canActivate:([AuthGuard]),
         loadChildren: () => import('./billing/billing.module').then(m => m.BillingModule)
     },
     {
-        path: '',
+        path: 'profile',
         canActivate:([AuthGuard]),
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
     },
     {
-        path: '',
-        canActivate:([AuthGuard]),
-        loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule)
-    },
-    {
-        path: '',
+        path: 'client',
         canActivate:([AuthGuard]),
         loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
     }

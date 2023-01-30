@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateComponent } from './template/template.component';
+import { TemplateRoutingModule } from "./template-routing.module";
 
 
 
@@ -9,7 +10,8 @@ import { TemplateComponent } from './template/template.component';
     TemplateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TemplateRoutingModule
   ]
 })
 export class TemplateModule { }

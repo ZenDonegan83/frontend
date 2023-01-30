@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslationService} from "../../../core/services/transalation.service";
+import { TranslationService } from "../../core/services/transalation.service";
 
 @Component({
-  selector: 'app-billing',
-  templateUrl: './billing.component.html',
-  styleUrls: ['./billing.component.scss']
+  selector: 'app-full-session-details',
+  templateUrl: './full-session-details.component.html',
+  styleUrls: ['./full-session-details.component.scss']
 })
-export class BillingComponent implements OnInit {
+export class FullSessionDetailsComponent implements OnInit {
 
   selectedLanguage: any = 'en';
   translation: any;
@@ -16,9 +16,10 @@ export class BillingComponent implements OnInit {
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
-        this.translation = data.billing_history;
+        this.translation = data.appointment_detail;
       });
     });
   }
+
 
 }

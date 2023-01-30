@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ErrorComponent } from './error/error.component';
+import { LayoutComponent } from "./pages/layout/layout.component";
+
+// ------------------- auth components ------------------
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
@@ -15,15 +17,16 @@ const routes: Routes = [
     { path: 'forget-password', component:  ForgetPasswordComponent },
   {
     path: '',
-      redirectTo: 'login',
+    redirectTo: 'login',
     pathMatch: 'full',
-  }, {
+  },
+    {
     path: '',
-    component: AdminLayoutComponent,
+    component: LayoutComponent,
     children: [
         {
       path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
+      loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   }]},
   {
     path: '**',

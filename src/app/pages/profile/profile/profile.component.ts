@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslationService} from "../../../core/services/transalation.service";
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  selectedLanguage: any = 'en';
+  translation: any = [];
+  constructor(private translationService:TranslationService) { }
 
   ngOnInit(): void {
+    this.translationService.language.subscribe((res: any) => {
+      this.selectedLanguage = res;
+      this.translationService.get().subscribe((data: any) => {
+        this.translation = data.profile;
+
+      });
+    });
   }
 
 }

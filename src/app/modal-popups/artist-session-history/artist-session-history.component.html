@@ -1,1 +1,56 @@
-<p>artist-session-history works!</p>
+<div class="row artists-head">
+    <div class="col-md-12 bg-clients">
+        <div class="table-box">
+            <div class="row">
+                <div class="col-md-12 clients-list">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="table-heading">{{selectedAppDate}}({{translation?.title}})</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 listing-table">
+                    <table id="artist-table">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>{{translation?.grid_columns[0]}}<img class="up-down" src="assets/img/up-dwn.png" alt="">
+                            </th>
+                            <th>{{translation?.grid_columns[1]}} <img class="up-down" src="assets/img/up-dwn.png"
+                                                                      alt=""></th>
+                            <th>{{translation?.grid_columns[2]}} <img class="up-down" src="assets/img/up-dwn.png"
+                                                                      alt=""></th>
+                            <th>{{translation?.grid_columns[3]}}<img class="up-down" src="assets/img/up-dwn.png" alt="">
+                            </th>
+                            <th>{{translation?.grid_columns[4]}}<img class="up-down" src="assets/img/up-dwn.png" alt="">
+                            </th>
+                            <th>{{translation?.grid_columns[5]}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of data|paginate: { itemsPerPage: 5,currentPage: q }">
+                            <td><span><img class="profile" src="assets/img/Profile.png" alt=""></span></td>
+                            <td><span>{{item.artist}}</span></td>
+                            <td><span>{{item.customer}} </span></td>
+                            <td><span> {{item.phone}}</span></td>
+                            <td><span class="cell-no">{{item.date}} </span></td>
+                            <td><span class="cell-no">{{item.time}} </span></td>
+                            <td><span class="dropdown">
+                           <a routerLink="/appointment-detail" class="dropdown-toggle" data-toggle="dropdown">
+                             <img class="eye-icon" src="assets/img/eye.png" alt="">
+                       </a>
+                      </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls class="pagination-pos" (pageChange)="q = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
