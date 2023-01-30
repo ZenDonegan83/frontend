@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {TemplateComponent} from "./template/template.component";
+import { TemplateComponent } from "./template/template.component";
 
 
 const routes: Routes = [
-    {path : 'template' , component:TemplateComponent}
+    {
+        path : 'template' ,
+        component:TemplateComponent
+    }
 ];
 
 @NgModule({

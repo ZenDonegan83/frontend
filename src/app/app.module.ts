@@ -10,6 +10,7 @@ import { NavigationModule } from "./navigation/navigation.module";
 import { ModalPopupsModule } from "./modal-popups/modal-popups.module";
 import { LayoutComponent } from "./pages/layout/layout.component";
 import { AuthModule } from "./auth/auth.module";
+import { LayoutModule } from "./pages/layout/layout.module";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AuthModule } from "./auth/auth.module";
         TranslateModule,
         NavigationModule,
         AuthModule,
+        LayoutModule,
 
         // ---- modal pop ups
         ModalPopupsModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslationService} from "../../../core/services/transalation.service";
+import { TranslationService } from "../../../core/services/transalation.service";
 
 @Component({
   selector: 'app-billing',

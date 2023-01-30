@@ -82,5 +82,4 @@ export class LayoutComponent implements OnInit {
     }
     return bool;
   }
-
 }

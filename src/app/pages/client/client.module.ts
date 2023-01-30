@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClientRoutingModule } from "./client-routing.module";
 import { ClientComponent } from "./client/client.component";
-
+import { ClientRoutingModule } from "./client-routing.module";
 
 //  -------------- material and forms imports ---------
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -11,7 +10,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 
 
@@ -32,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule ,
     ReactiveFormsModule,
     NgxPaginationModule,
-  ] ,
+  ],
 })
 export class ClientModule { }
 
