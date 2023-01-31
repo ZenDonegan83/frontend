@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslationService} from "../../core/services/transalation.service";
+import { TranslationService } from "../../core/services/transalation.service";
 
 declare const $: any;
 declare interface RouteInfo {
@@ -11,7 +11,7 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon:'assets/img/dashboard-icon.svg', class: '' },
   { path: '/schedule', title: 'Schedule',  icon:'assets/img/calender.svg', class: '' },
-  { path: '/clients', title: 'Clients',  icon:'assets/img/clients-icon.svg', class: '' },
+  { path: '/client', title: 'Clients',  icon:'assets/img/clients-icon.svg', class: '' },
   { path: '/artist', title: 'Artists',  icon:'assets/img/artists-icon.svg', class: '' },
   { path: '/template', title: 'Templates',  icon:'assets/img/schedule-icon.svg', class: '' },
  ];

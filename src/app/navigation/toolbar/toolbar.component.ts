@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {Location} from "@angular/common";
-import {Router} from "@angular/router";
-import {TranslationService} from "../../core/services/transalation.service";
-import {ROUTES} from "../sidenav/sidenav.component";
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
+import { Router } from "@angular/router";
+import { TranslationService } from "../../core/services/transalation.service";
+import { ROUTES } from "../sidenav/sidenav.component";
 
 @Component({
   selector: 'app-toolbar',
@@ -71,8 +71,6 @@ export class ToolbarComponent implements OnInit {
     body.classList.remove('nav-open');
   };
   sidebarToggle() {
-    // const toggleButton = this.toggleButton;
-    // const body = document.getElementsByTagName('body')[0];
     if (this.sidebarVisible === false) {
       this.sidebarOpen();
     } else {

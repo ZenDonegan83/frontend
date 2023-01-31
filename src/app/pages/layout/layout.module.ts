@@ -13,16 +13,16 @@ import { NavigationModule } from "../../navigation/navigation.module";
 import { ArtistModule } from "../artist/artist.module";
 
 // -------------- module components ------------------
-import {NgApexchartsModule} from "ng-apexcharts";
-import {NgChartsModule} from "ng2-charts";
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatSortModule} from "@angular/material/sort";
-import {MatTableModule} from "@angular/material/table";
-import {Ng2SearchPipeModule} from "ng2-search-filter";
-import {FullCalendarModule} from "@fullcalendar/angular";
-import {NgxPaginationModule} from "ngx-pagination";
+import { NgApexchartsModule } from "ng-apexcharts";
+import { NgChartsModule } from "ng2-charts";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { FullCalendarModule } from "@fullcalendar/angular";
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 

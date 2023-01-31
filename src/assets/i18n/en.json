@@ -191,7 +191,7 @@
     "payment_card": {
       "title": "Payment Method",
       "description": "Manage billing information and view recipes",
-      "btn_remove": "Remove"
+      "btn_remove": "Update Card"
     }
   },
   "appointments_listing": {

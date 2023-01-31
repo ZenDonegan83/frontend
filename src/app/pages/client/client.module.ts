@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,15 +25,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ClientRoutingModule,
+    ClientRoutingModule,
 
     // component specific modules
     Ng2SearchPipeModule,
-    ClientRoutingModule ,
     MatTableModule ,
     MatPaginatorModule,
     MatSortModule,
     FormsModule ,
-    ReactiveFormsModule,
     NgxPaginationModule
   ],
 })
