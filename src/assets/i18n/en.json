@@ -163,7 +163,7 @@
   "templates": {
     "btn_actions": [
       "Edit",
-      "Delete",
+      "Activate",
       "Deactivate"
     ]
   },

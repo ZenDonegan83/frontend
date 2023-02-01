@@ -1,0 +1,156 @@
+/* scheduler  */
+.fc .fc-toolbar-title{
+  font: normal normal bold 18px/24px Nunito Sans;
+  letter-spacing: 0.18px;
+  color: #78EF30;
+  opacity: 1;
+}
+.fc .fc-button-group {
+  gap: 16px;
+}
+.fc .fc-col-header-cell-cushion {
+  font: normal normal normal 12px/24px Nunito Sans;
+  letter-spacing: 0.12px;
+  color: #78EF30;
+  opacity: 1;
+}
+.fc .fc-daygrid-day-number{
+  font: normal normal normal 12px/16px Nunito Sans;
+  letter-spacing: 0.12px;
+  color: #78EF30;
+  opacity: 1;
+}
+.fc-theme-standard .fc-scrollgrid {
+  border: 1px solid #565656 !important;
+  opacity: 1;
+}
+.fc-theme-standard td, .fc-theme-standard th{
+  border: 1px solid #565656 !important;
+  opacity: 1;
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+  background-color: #78EF30  !important;
+  box-shadow: 0px 0px 15px #78EF30;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal bold 10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #000000 !important;
+
+  opacity: 1;
+
+}
+.fc-dayGridMonth-button{
+  background-color: #434343   !important;
+
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal  10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+
+}
+.fc-timeGridWeek-button{
+  background-color: #434343   !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal  10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+.fc-timeGridDay-button{
+  background-color: #434343   !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal  10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+.fc-listWeek-button{
+  background-color: #434343   !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal  10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+
+.fc-today-button{
+  background-color: #434343   !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal  10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+.fc-header-toolbar .fc-toolbar-chunk:nth-child(1) .fc-button-group:nth-child(1) {
+  border: 1px solid #434343;
+  border-radius: 20px;
+}
+.fc-addEventButton-button{
+  background-color: #78EF30  !important;
+  box-shadow: 0px 0px 15px #78EF30;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal bold 10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #000000 !important;
+
+  opacity: 1;
+}
+.fc-prev-button{
+  background-color: unset   !important;
+  border: unset !important;
+  color: gray !important;
+}
+.fc-next-button{
+  background-color: unset   !important;
+  border: unset !important;
+  color:#78EF30 !important;
+}
+.fc-h-event .fc-event-main {
+  background-color: #78EF30;
+  color: #000 !important;
+  border: unset !important;
+}
+.fc-daygrid-event{
+  color: #fff;
+}
+.fc-v-event .fc-event-main{
+  background-color: #78EF30;
+  color: #000 !important;
+  border: unset !important;
+}
+a{
+  cursor: pointer;
+}
+.fc .fc-button-primary:focus {
+  box-shadow:unset !important;
+}

@@ -604,10 +604,6 @@ border: unset !important;
     color: #fff !important;
  }
 
- /* .mat-dialog-container {
-background: unset !important;
-box-shadow: unset;
- } */
 
  .navbar-default .navbar-nav>.dropdown>a:hover .caret, .navbar-default .navbar-nav>.dropdown>a:focus .caret{
 
@@ -626,11 +622,4 @@ border-bottom-color: #9a9a9a;
  .side-icons{
     width: 16px;
  }
- /* #mat-dialog-0{
-    background-color: unset !important;
-    box-shadow: unset !important;
- } */
-  /*.mat-dialog-container {
-    background-color: unset !important;
-    box-shadow: unset !important;
- }*/
+
