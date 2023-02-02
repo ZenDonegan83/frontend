@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,19 +22,20 @@ import { FormsModule } from '@angular/forms';
       AddClientComponent,
       ClientSessionHistoryComponent
   ],
-  imports: [
-    CommonModule,
-    ClientRoutingModule,
-    ClientRoutingModule,
+    imports: [
+        CommonModule,
+        ClientRoutingModule,
+        ClientRoutingModule,
 
-    // component specific modules
-    Ng2SearchPipeModule,
-    MatTableModule ,
-    MatPaginatorModule,
-    MatSortModule,
-    FormsModule ,
-    NgxPaginationModule
-  ],
+        // component specific modules
+        Ng2SearchPipeModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        FormsModule,
+        NgxPaginationModule,
+        ReactiveFormsModule
+    ],
 })
 export class ClientModule { }
 

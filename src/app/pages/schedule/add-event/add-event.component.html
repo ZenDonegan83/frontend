@@ -1,1 +1,118 @@
-<p>add-event works test</p>
+<div class="container-fluid">
+    <div class="row artist-header">
+        <div class="col-md-12">
+            <p  class="artist-text">Create Event</p>
+            <a class="close-btn" (click)="closeModal()">
+                <img class="close-img" src="assets/img/close.png" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- addeventForm -->
+    <form  [formGroup]="addeventForm" (ngSubmit)="addArtist(addeventForm)">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" formControlName="firstName" class="form-control artist-input" placeholder="First name">
+            </div>
+            <div class="col-md-6">
+                <input type="text" formControlName="lastName"  class="form-control artist-input" placeholder="Last name">
+            </div>
+        </div>
+
+        <div class="row form-margin">
+            <div class="col-md-6">
+                <input type="email" formControlName="email" class="form-control artist-input" placeholder="Email">
+            </div>
+            <div class="col-md-6">
+                <input type="text" formControlName="telephone" class="form-control artist-input" placeholder="Phone">
+            </div>
+        </div>
+        <div class="row form-margin">
+            <div class="col-md-6">
+                <!-- <input type="text" formControlName="artist" class="form-control artist-input" placeholder="Select Artist"> -->
+                <i class="fa fa-angle-down down-tip" aria-hidden="true"></i>
+                <select id="cars" formControlName="artist" class="form-control artist-input" placeholder="artist" >
+
+                    <option  value="John">John</option>
+                    <option value="Liza">Liza</option>
+                    <option value="Ammber">Ammber</option>
+                    <option value="laadi">laadi</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" formControlName="price" class="form-control artist-input" placeholder="Price">
+            </div>
+        </div>
+        <div class="row form-margin">
+            <div class="col-md-6">
+                <input type="time" formControlName="start" class="form-control artist-input" placeholder="Start Time">
+            </div>
+            <div class="col-md-6">
+                <input type="time" formControlName="end" class="form-control artist-input" placeholder="End Time">
+            </div>
+        </div>
+
+        <div class="row form-margin">
+            <div class="col-md-12">
+                <label for="" style="color:#fff"> Upload Images</label>
+                <div class="row">
+                    <div class="col-md-4" >
+                        <div class="img-styl">
+
+                            <div class="form-group" *ngIf="isSelected">
+                                <label class="upload-labal" for="file"><i class="fa fa-plus" aria-hidden="true"></i>upload</label>
+                                <input
+                                        id="file"
+                                        name="photo"
+                                        type="file"
+                                        class="form-control uploadFile"
+                                        (change)="onFileChange($event)">
+                            </div>
+                            <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
+                        </div>
+                    </div>
+                    <div class="col-md-4" >
+                        <div class="img-styl">
+
+                            <div class="form-group" *ngIf="isSelected">
+                                <label class="upload-labal" for="file"><i class="fa fa-plus" aria-hidden="true"></i>upload</label>
+                                <input
+                                        id="file"
+                                        name="photo"
+                                        type="file"
+                                        class="form-control uploadFile"
+                                        (change)="onFileChange($event)">
+                            </div>
+                            <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
+                        </div>
+                    </div>
+                    <div class="col-md-4" >
+                        <div class="img-styl">
+
+                            <div class="form-group"  *ngIf="isSelected">
+                                <label class="upload-labal" for="file"> <i class="fa fa-plus" aria-hidden="true"></i>upload</label>
+                                <input
+                                        id="file"
+                                        name="photo"
+                                        type="file"
+                                        class="form-control uploadFile"
+                                        (change)="onFileChange($event)">
+                            </div>
+                            <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row form-margin">
+            <div class="col-md-12">
+
+                <button class="btn btn-default artist-btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</div>
