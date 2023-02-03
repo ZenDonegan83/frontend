@@ -341,7 +341,7 @@ padding: 10px 30px;
 .ngx-pagination .current {
     padding: 0.1875rem 0.625rem;
     background: #78EF30 !important;
-    box-shadow: 0px 0px 10px 3px #78ef30;
+    /*box-shadow: 0px 0px 10px 3px #78ef30;*/
     color: #000!important;
     color: #fefefe;
     text-align: center;
@@ -455,7 +455,7 @@ padding: 10px 30px;
         }
         .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
             background-color: #78EF30  !important;
-            box-shadow: 0px 0px 15px #78EF30;
+            /*box-shadow: 0px 0px 15px #78EF30;*/
             border-radius: 20px !important;
            opacity: 1;
            border: unset !important;
@@ -540,7 +540,7 @@ height: 32px;
 }
  .fc-addEventButton-button{
      background-color: #78EF30  !important;
-     box-shadow: 0px 0px 15px #78EF30;
+     /*box-shadow: 0px 0px 15px #78EF30;*/
      border-radius: 20px !important;
      opacity: 1;
      border: unset !important;
@@ -593,10 +593,14 @@ border: unset !important;
  input[type="time"]::-webkit-calendar-picker-indicator{
      color:white;
  }
- tbody tr:hover{
-     box-shadow: 0px 0px 5px 0px #78EF30;
+ td.fc-day:hover{
+     box-shadow: 0px 0px 3px 0px #78EF30;
      border-radius: 10px;
  }
+
+
+  /*navbar syles bein here*/
+
  .navbar-default .navbar-nav>li>a:not(.btn):hover, .navbar-default .navbar-nav>li>a:not(.btn):focus{
     color: #9a9a9a !important;
  }
