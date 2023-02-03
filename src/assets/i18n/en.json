@@ -111,10 +111,10 @@
     ]
   },
   "add_client": {
-    "name": "Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
     "phone": "Phone",
     "email": "Email",
-    "password" : "Password",
     "btn_save": "Save"
   },
   "client_detail": {
@@ -154,8 +154,7 @@
     "first_name": "First Name",
     "last_name": "Last Name",
     "user_name": "Username",
-    "telephone" : "Telephone",
-    "role": "Role",
+    "number" : "Number",
     "email": "Email",
     "password": "Password",
     "btn_submit": "Submit"

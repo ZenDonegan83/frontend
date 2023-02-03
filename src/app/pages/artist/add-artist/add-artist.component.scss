@@ -1,0 +1,85 @@
+.artist-header{
+  width: 550px;
+  height: 62px;
+  background: #78EF30 0% 0% no-repeat padding-box;
+  position: relative;
+  bottom: 24px;
+  right: 24px;
+}
+
+.form-margin{
+  margin-top: 2rem;
+}
+
+.artist-text{
+  position: relative;
+  top: 2rem;
+  font: normal normal bold 18px/24px Nunito Sans;
+  letter-spacing: 0.18px;
+  color: #000000;
+  opacity: 1;
+}
+.artist-input{
+  box-shadow: 0px 3px 12px #706E6E29;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  opacity: 1;
+  background: #302E2E 0% 0% no-repeat padding-box;
+  color: #FFFFFF;
+}
+
+.artist-btn{
+  background: #78EF30 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 30px #78ef30;
+  border-radius: 20px;
+  opacity: 1;
+  width: 126px;
+  height: 40px;
+  border: none;
+  font: normal normal bold 14px/24px Nunito Sans;
+  letter-spacing: 0.14px;
+  color: #000000;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.close-btn{
+  position: relative;
+  top: 10px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  width: 23px;
+  float: right;
+}
+.pos-close{
+  display: flex;
+  justify-content: center;
+}
+.close-img{
+  width: 15px;
+  margin-left: 2px;
+}
+
+.img-styl{
+  width: 91px;
+  height: 89px;
+
+  border-radius: 91px;
+  overflow: hidden;
+}
+input[type="file"]{
+  display: none;
+}
+.upload-labal{
+  font-weight: 500;
+  font-size: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.img-pos{
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+}
