@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
+
+// ------------------------modules and components ------------------
 import { ErrorComponent } from "./modal-popups/error/error.component";
 import { NavigationModule } from "./navigation/navigation.module";
 import { LayoutComponent } from "./pages/layout/layout.component";

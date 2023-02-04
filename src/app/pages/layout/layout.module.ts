@@ -13,8 +13,7 @@ import { NavigationModule } from "../../navigation/navigation.module";
 import { ArtistModule } from "../artist/artist.module";
 
 // -------------- module components ------------------
-import { NgApexchartsModule } from "ng-apexcharts";
-import { NgChartsModule } from "ng2-charts";
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -41,7 +40,6 @@ import { NgxPaginationModule } from "ngx-pagination";
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    NgChartsModule,
     ProfileModule,
     TemplateModule ,
     BillingModule ,
@@ -49,7 +47,6 @@ import { NgxPaginationModule } from "ngx-pagination";
     ClientModule,
     NavigationModule,
     ArtistModule,
-    NgApexchartsModule,
     RouterModule.forChild(LayoutRoutes),
   ]
 })
