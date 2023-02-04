@@ -553,7 +553,7 @@ height: 32px;
 .fc-prev-button{
     background-color: unset   !important;
     border: unset !important;
-    color: gray !important;
+    color:#78EF30 !important;
 }
 .fc-next-button{
     background-color: unset   !important;
@@ -583,6 +583,32 @@ a{
 h1, label{
     color:white;
     font-weight: normal;}
+
+/*the cell colour of today's date in month/week/day views */
+
+ .fc .fc-daygrid-day.fc-day-today{
+     background-color: #444242 !important;
+ }
+
+ .fc .fc-day-today{
+     background-color: #302E2E !important;
+ }
+
+ .fc .fc-list-empty{
+     background-color: #302E2E !important;
+ }
+
+ /*colour of times down the left side of schedule on week and day view*/
+
+ .fc-timegrid-slot-label-cushion{
+     color: #78EF30 !important;
+     font: normal normal normal 12px/16px Nunito Sans;
+ }
+
+ .fc-timegrid-axis-cushion {
+     color: #78EF30 !important;
+     font: normal normal normal 12px/16px Nunito Sans;
+ }
 
 /*#mat-dialog-1 {
     background: unset !important;

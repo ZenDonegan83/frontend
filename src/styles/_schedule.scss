@@ -1,36 +1,41 @@
-/* scheduler  */
-.fc .fc-toolbar-title{
+.fc .fc-toolbar-title {
   font: normal normal bold 18px/24px Nunito Sans;
   letter-spacing: 0.18px;
   color: #78EF30;
   opacity: 1;
 }
+
 .fc .fc-button-group {
   gap: 16px;
 }
+
 .fc .fc-col-header-cell-cushion {
   font: normal normal normal 12px/24px Nunito Sans;
   letter-spacing: 0.12px;
   color: #78EF30;
   opacity: 1;
 }
-.fc .fc-daygrid-day-number{
+
+.fc .fc-daygrid-day-number {
   font: normal normal normal 12px/16px Nunito Sans;
   letter-spacing: 0.12px;
   color: #78EF30;
   opacity: 1;
 }
+
 .fc-theme-standard .fc-scrollgrid {
   border: 1px solid #565656 !important;
   opacity: 1;
 }
-.fc-theme-standard td, .fc-theme-standard th{
+
+.fc-theme-standard td, .fc-theme-standard th {
   border: 1px solid #565656 !important;
   opacity: 1;
 }
-.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
-  background-color: #78EF30  !important;
-  box-shadow: 0px 0px 15px #78EF30;
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+  background-color: #78EF30 !important;
+  /*box-shadow: 0px 0px 15px #78EF30;*/
   border-radius: 20px !important;
   opacity: 1;
   border: unset !important;
@@ -41,13 +46,14 @@
   opacity: 1;
 
 }
-.fc-dayGridMonth-button{
-  background-color: #434343   !important;
+
+.fc-dayGridMonth-button {
+  background-color: #434343 !important;
 
   border-radius: 20px !important;
   opacity: 1;
   border: unset !important;
-  font: normal normal  10px/24px Nunito Sans !important;
+  font: normal normal 10px/24px Nunito Sans !important;
   letter-spacing: 0.14px !important;
   color: #fff !important;
   text-transform: uppercase !important;
@@ -56,38 +62,13 @@
   height: 32px;
 
 }
-.fc-timeGridWeek-button{
-  background-color: #434343   !important;
+
+.fc-timeGridWeek-button {
+  background-color: #434343 !important;
   border-radius: 20px !important;
   opacity: 1;
   border: unset !important;
-  font: normal normal  10px/24px Nunito Sans !important;
-  letter-spacing: 0.14px !important;
-  color: #fff !important;
-  text-transform: uppercase !important;
-  opacity: 1;
-  width: 75px;
-  height: 32px;
-}
-.fc-timeGridDay-button{
-  background-color: #434343   !important;
-  border-radius: 20px !important;
-  opacity: 1;
-  border: unset !important;
-  font: normal normal  10px/24px Nunito Sans !important;
-  letter-spacing: 0.14px !important;
-  color: #fff !important;
-  text-transform: uppercase !important;
-  opacity: 1;
-  width: 75px;
-  height: 32px;
-}
-.fc-listWeek-button{
-  background-color: #434343   !important;
-  border-radius: 20px !important;
-  opacity: 1;
-  border: unset !important;
-  font: normal normal  10px/24px Nunito Sans !important;
+  font: normal normal 10px/24px Nunito Sans !important;
   letter-spacing: 0.14px !important;
   color: #fff !important;
   text-transform: uppercase !important;
@@ -96,12 +77,12 @@
   height: 32px;
 }
 
-.fc-today-button{
-  background-color: #434343   !important;
+.fc-timeGridDay-button {
+  background-color: #434343 !important;
   border-radius: 20px !important;
   opacity: 1;
   border: unset !important;
-  font: normal normal  10px/24px Nunito Sans !important;
+  font: normal normal 10px/24px Nunito Sans !important;
   letter-spacing: 0.14px !important;
   color: #fff !important;
   text-transform: uppercase !important;
@@ -109,13 +90,43 @@
   width: 75px;
   height: 32px;
 }
+
+.fc-listWeek-button {
+  background-color: #434343 !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal 10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+
+.fc-today-button {
+  background-color: #434343 !important;
+  border-radius: 20px !important;
+  opacity: 1;
+  border: unset !important;
+  font: normal normal 10px/24px Nunito Sans !important;
+  letter-spacing: 0.14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  opacity: 1;
+  width: 75px;
+  height: 32px;
+}
+
 .fc-header-toolbar .fc-toolbar-chunk:nth-child(1) .fc-button-group:nth-child(1) {
   border: 1px solid #434343;
   border-radius: 20px;
 }
-.fc-addEventButton-button{
-  background-color: #78EF30  !important;
-  box-shadow: 0px 0px 15px #78EF30;
+
+.fc-addEventButton-button {
+  background-color: #78EF30 !important;
+  /*box-shadow: 0px 0px 15px #78EF30;*/
   border-radius: 20px !important;
   opacity: 1;
   border: unset !important;
@@ -125,32 +136,79 @@
 
   opacity: 1;
 }
-.fc-prev-button{
-  background-color: unset   !important;
+
+.fc-prev-button {
+  background-color: unset !important;
   border: unset !important;
-  color: gray !important;
+  color: #78EF30 !important;
 }
-.fc-next-button{
-  background-color: unset   !important;
+
+.fc-next-button {
+  background-color: unset !important;
   border: unset !important;
-  color:#78EF30 !important;
+  color: #78EF30 !important;
 }
+
 .fc-h-event .fc-event-main {
   background-color: #78EF30;
   color: #000 !important;
   border: unset !important;
 }
-.fc-daygrid-event{
+
+.fc-daygrid-event {
   color: #fff;
 }
-.fc-v-event .fc-event-main{
+
+.fc-v-event .fc-event-main {
   background-color: #78EF30;
   color: #000 !important;
   border: unset !important;
 }
-a{
+
+a {
   cursor: pointer;
 }
+
 .fc .fc-button-primary:focus {
-  box-shadow:unset !important;
+  box-shadow: unset !important;
+}
+
+h1, label {
+  color: white;
+  font-weight: normal;
+}
+
+/*the cell colour of today's date in month/week/day views */
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #444242 !important;
+}
+
+.fc .fc-day-today {
+  background-color: #302E2E !important;
+}
+
+.fc .fc-list-empty {
+  background-color: #302E2E !important;
+}
+
+/*colour of times down the left side of schedule on week and day view*/
+
+.fc-timegrid-slot-label-cushion {
+  color: #78EF30 !important;
+  font: normal normal normal 12px/16px Nunito Sans;
+}
+
+.fc-timegrid-axis-cushion {
+  color: #78EF30 !important;
+  font: normal normal normal 12px/16px Nunito Sans;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  color: white;
+}
+
+td.fc-day:hover {
+  box-shadow: 0px 0px 3px 0px #78EF30;
+  border-radius: 10px;
 }

@@ -31,7 +31,7 @@ export class ScheduleComponent implements OnInit {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
     weekends: true,
     editable: true,
     selectable: false,

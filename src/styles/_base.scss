@@ -1,0 +1,34 @@
+// -------------------  colour variables
+
+$accent-green: #78EF30;
+$font-regular: #fff;
+$font-headers: #ffffff;
+$card-backgrounds: #302E2E;
+$main-background: #000;
+$hover-btn-and-dropdown-shadow: 0 0 5px 2px #78ef30;
+$purple-for-graphs: #7F00FF;
+$secondary-btn: #737373;
+
+
+// --------------------  global settings
+
+*,
+before,
+after {
+  margin:0;
+  padding:0;
+  box-sizing: inherit;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+
+
+body {
+  box-sizing: border-box;
+  line-height: 1.5rem;
+  font-family: 'nunito', 'sans-serif';
+}

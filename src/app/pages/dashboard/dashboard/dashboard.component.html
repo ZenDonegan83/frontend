@@ -4,6 +4,9 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
+
+<!----------------------------------------------    the 4 data cards start here ------------------------------>
+
                         <div class="row head-cards">
                             <div class="col-md-3 co-sm-6">
                                 <div class="card-styl">
@@ -32,9 +35,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- bar chart -->
-                <div class="row">
 
+<!----------------------------------------------------  end of 4 data cards -------------------------------------------------------->
+
+<!----------------------------------------------------  bar chart for number of hours tattooed starts here ------------------------->
+                <div class="row">
                     <div class="col-md-12 bar-chart">
                         <div class="row">
                             <div class="col-md-12"
@@ -47,20 +52,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="chart">
-                            <apx-chart
-                                    [series]="chartOptions1.series"
-                                    [chart]="chartOptions1.chart"
-                                    [dataLabels]="chartOptions1.dataLabels"
-                                    [plotOptions]="chartOptions1.plotOptions"
-                                    [xaxis]="chartOptions1.xaxis"
-                                    [responsive]="chartOptions1.responsive"
-                            ></apx-chart>
-                        </div>
+
                     </div>
                 </div>
-                <div class="row billing-Order-history" style="    padding-top: 35px;">
+                <div class="row billing-Order-history" style=" padding-top: 35px;">
                     <div class="col-md-12">
+
+<!------------------------------------------ beginning of artist statistics starts here ----------------------------------->
 
                         <div>
                             <h4>Artist Stats</h4>
@@ -86,6 +84,9 @@
 
                                         <td><span class="viewMore" routerLink="/artist/artist-detail"><img
                                                 src="assets/img/eye.png" alt=""></span></td>
+
+<!------------------------------------------ artist history needs to be a popup modal here -------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------------------->
                                     </tr>
                                     </tbody>
                                 </table>
@@ -94,7 +95,9 @@
                     </div>
                 </div>
             </div>
-            <!-- right section -->
+<!---------------------------------------------------- right section -------------------------------------------------------------->
+
+<!---------------------------------------------------- Client behaviour area chart starts here ------------------------------------->
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12 chart-bg">
@@ -109,19 +112,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="chart">
-                            <apx-chart
-                                    [series]="chartOptions.series"
-                                    [chart]="chartOptions.chart"
-                                    [xaxis]="chartOptions.xaxis"
-                                    [stroke]="chartOptions.stroke"
-                                    [tooltip]="chartOptions.tooltip"
-                                    [dataLabels]="chartOptions.dataLabels"
-                                    [responsive]="chartOptions.responsive"
-                            ></apx-chart>
-                        </div>
+
                     </div>
                 </div>
+
+<!----------------------------------------------------- end of client behaviour area chart ------------------------------>
+
+<!----------------------------------------------------- start of pic chart for customers and returning customers -------->
                 <div class="row" style="padding-top: 12px;">
                     <div class="col-md-12 chart-bg">
                         <div class="row">
@@ -135,15 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="chart">
-                            <!--  <apx-chart style="display: flex;
-                              justify-content: center;"
-                                [series]="chartOptions2.series"
-                                [chart]="chartOptions2.chart"
-                                [labels]="chartOptions2.labels"
-                                [responsive]="chartOptions2.responsive"
-                              ></apx-chart>-->
-                        </div>
+
                     </div>
                 </div>
             </div>
