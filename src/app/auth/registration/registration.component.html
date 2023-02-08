@@ -1,90 +1,133 @@
-
 <section class="register-bg">
-     <div class="logo-pos ">
-         <img src="assets/img/Logo.png" alt="">
+    <div class="logo-pos ">
+        <img src="assets/img/Logo.png" alt="">
+    </div>
+
+    <span><img src="assets/img/box-1.png" class="img-fluid login-speape" alt=""></span>
+    <span><img src="assets/img/sheape2.png" class="img-fluid login-speape2" alt=""></span>
+    <div class="resister-bgcol">
+        <div class="container pos-set">
+            <div class="col-md-6 col-sm-12 col-lg-6 reg-form">
+                <div class="panel panel-primary">
+
+                    <div class="panel-body">
+                        <div class="head-text">
+                            <h2> {{translation?.title}} </h2>
+                        </div>
+                        <div>
+                            <p class="sub-txt">{{translation?.sub_title}}</p>
+                        </div>
+                        <form name="myform form-registration" autocomplete="new-password" [formGroup]="registerForm"
+                            (ngSubmit)="registerUser(registerForm)">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control inputstyl profile"
+                                            formControlName="userName" autocomplete="new-password"
+                                            [(ngModel)]="model.userName"
+                                            placeholder="{{translation?.register_form.userName ?? 'User Name'}}">
+                                        <div *ngIf="registerForm.get('userName').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('userName').errors.required">User Name is
+                                                required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input id="fname" name="firstName" type="text" formControlName="firstName"
+                                            class="form-control inputstyl profile" autocomplete="new-password"
+                                            [(ngModel)]="model.firstName"
+                                            placeholder="{{translation?.register_form.firstName || 'First Name'}}">
+                                        <div *ngIf="registerForm.get('firstName').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('firstName').errors.required">First Name is
+                                                required</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <input type="text" id="lname" name="lastName" formControlName="lastName"
+                                            class="form-control inputstyl profile" autocomplete="new-password"
+                                            [(ngModel)]="model.lastName"
+                                            placeholder="{{translation?.register_form.lastName ?? 'Last Name'}}">
+                                        <div *ngIf="registerForm.get('lastName').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('lastName').errors.required">Last Name is
+                                                required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <input type="email" class="form-control inputstyl email" formControlName="email"
+                                            autocomplete="new-password" [(ngModel)]="model.email"
+                                            placeholder="{{translation?.register_form.email ?? 'Email'}}">
+                                        <div *ngIf="registerForm.get('email').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('email').errors.required">Email is
+                                                required</span>
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('email').errors.email">Email is not
+                                                valid</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <input type="text" class="form-control inputstyl phone"
+                                            formControlName="telephone" [(ngModel)]="model.telephone"
+                                            placeholder="{{translation?.register_form.telephone ?? 'Telephone'}}"
+                                            autocomplete="new-password">
+                                        <div *ngIf="registerForm.get('telephone').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('telephone').errors.required">Telephone is
+                                                required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <input type="password" formControlName="password"
+                                            class="form-control inputstyl pass" placeholder="Password"
+                                            [(ngModel)]="model.password" autocomplete=" new-password">
+                                        <div *ngIf="registerForm.get('password').invalid && submitted">
+                                            <span class="text-danger"
+                                                *ngIf="registerForm.get('password').errors.required">Password is
+                                                required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <p><span style="color:#fff"> if you have an already account?</span>  <a href="#"> please Login</a> </p> -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <button id="submit" type="submit" value="submit"
+                                            class="btn btn-primary center submit-btn">Register</button>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                            </div>
+                            <a style="    position: relative;
+                             top: 30px;"><span class="already-txt"> Already here an account?</span> <span
+                                    [routerLink]="['/login']" class="login-txt">Login</span></a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
-                    
-        <span><img src="assets/img/box-1.png" class="img-fluid login-speape" alt=""></span>
-        <span><img src="assets/img/sheape2.png" class="img-fluid login-speape2" alt=""></span>
-     <div class="resister-bgcol">
-         <div class="container pos-set">
-             <div class="col-md-6 col-sm-12 col-lg-6 reg-form">
-                 <div class="panel panel-primary">
- 
-                     <div class="panel-body">
-                         <div class="head-text">
-                             <h2> {{translation?.title}} </h2>
-                         </div>
-                         <div><p class="sub-txt">{{translation?.sub_title}}</p></div>
-                         <form name="myform form-registration" autocomplete="off" [formGroup]="registerForm"  (ngSubmit)="registerUser(registerForm)">
-                             <div class="row">
-                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                        
-                                         <input type="text" class="form-control inputstyl profile" formControlName="username" placeholder="{{translation?.register_form.username}}">
-                                         
-                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                          
-                                         <input id="fname" name="firstname"  type="text" formControlName="firstName" class="form-control inputstyl profile"  placeholder="{{translation?.register_form.firstname}}">
-                                         
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                        
-                                         <input type="text" id="lname" name="lastname" formControlName="lastName" class="form-control inputstyl profile"   placeholder="{{translation?.register_form.lastname}}">
-                                        
-                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                       
-                                         <input type="email" class="form-control inputstyl email" formControlName="email"   placeholder="{{translation?.register_form.email}}">
-                                   
-                                     </div>
-                                 </div>
-                             </div>
- 
- 
- 
-                             <div class="row">
-                                 <div class="col-md-6">
-                             <div class="form-group">
-                                
-                                 <input type="text"  class="form-control inputstyl phone" placeholder="{{translation?.register_form.telephone}}" autocomplete="off">
-                                 
-                             </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                        
-                                         <input type="password"   formControlName="password" class="form-control inputstyl pass" placeholder="{{translation?.register_form.password}}" autocomplete="off">
-                                         
-                                     </div>
-                                         </div>
-                             </div>
-                             <!-- <p><span style="color:#fff"> if you have an already account?</span>  <a href="#"> please Login</a> </p> -->
-                             <div class="row">
-                                 <div class="col-md-6">
-                             <div>
-                                 <button id="submit" type="submit" value="submit" class="btn btn-primary center submit-btn">{{translation?.register_form.btn_register}}</button>
-                              
-                             </div>
-                                 </div>
-                                 <div class="col-md-6"></div>
-                             </div>
-                             <a style="    position: relative;
-                             top: 30px;"><span class="already-txt"> Already here an account?</span> <span [routerLink]="['/login']" class="login-txt">Login</span></a>
-                         </form>
- 
-                     </div>
-                 </div>
-             </div>
-         </div>
-         </div>
-     </section>
+    </div>
+</section>

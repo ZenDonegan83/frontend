@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-<!----------------------------------------------    the 4 data cards start here ------------------------------>
+                        <!----------------------------------------------    the 4 data cards start here ------------------------------>
 
                         <div class="row head-cards">
                             <div class="col-md-3 co-sm-6">
@@ -36,20 +36,28 @@
                     </div>
                 </div>
 
-<!----------------------------------------------------  end of 4 data cards -------------------------------------------------------->
+                <!----------------------------------------------------  end of 4 data cards -------------------------------------------------------->
 
-<!----------------------------------------------------  bar chart for number of hours tattooed starts here ------------------------->
+                <!----------------------------------------------------  bar chart for number of hours tattooed starts here ------------------------->
                 <div class="row">
                     <div class="col-md-12 bar-chart">
                         <div class="row">
                             <div class="col-md-12"
-                                 style="display: flex; justify-content: space-between;  padding: 20px;">
+                                style="display: flex; justify-content: space-between;  padding: 20px;">
                                 <div>
-                                    <h4>Hours Tattooed</h4></div>
+                                    <h4>Hours Tattooed</h4>
+                                </div>
                                 <div class="head-btn" style="display: flex;">
                                     <button class="btn btn-primary month-btn">Monthly</button>
                                     <button class="btn btn-primary yearly-btn">Yearly</button>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <apx-chart [series]="barChartOptions.series" [chart]="barChartOptions.chart"
+                                    [dataLabels]="barChartOptions.dataLabels"
+                                    [plotOptions]="barChartOptions.plotOptions" [yaxis]="barChartOptions.yaxis"
+                                    [fill]="barChartOptions.fill" [xaxis]="barChartOptions.xaxis">
+                                </apx-chart>
                             </div>
                         </div>
 
@@ -58,36 +66,36 @@
                 <div class="row billing-Order-history" style=" padding-top: 35px;">
                     <div class="col-md-12">
 
-<!------------------------------------------ beginning of artist statistics starts here ----------------------------------->
+                        <!------------------------------------------ beginning of artist statistics starts here ----------------------------------->
 
                         <div>
                             <h4>Artist Stats</h4>
                             <div class="order-table">
                                 <table id="myTable">
                                     <thead>
-                                    <tr>
-                                        <th>Artists</th>
-                                        <th>Started</th>
-                                        <th>Hours</th>
-                                        <th>No Tat</th>
-                                        <th>Earned</th>
-                                        <th>View</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Artists</th>
+                                            <th>Started</th>
+                                            <th>Hours</th>
+                                            <th>No Tat</th>
+                                            <th>Earned</th>
+                                            <th>View</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let item of artistData">
-                                        <td><span>{{item.artist}}</span></td>
-                                        <td><span>{{item.started}} </span></td>
-                                        <td><span> {{item.hours}}</span></td>
-                                        <td><span> {{item.notat}}</span></td>
-                                        <td><span> {{item.earned}}</span></td>
+                                        <tr *ngFor="let item of artistData">
+                                            <td><span>{{item.artist}}</span></td>
+                                            <td><span>{{item.started}} </span></td>
+                                            <td><span> {{item.hours}}</span></td>
+                                            <td><span> {{item.notat}}</span></td>
+                                            <td><span> {{item.earned}}</span></td>
 
-                                        <td><span class="viewMore" routerLink="/artist/artist-detail"><img
-                                                src="assets/img/eye.png" alt=""></span></td>
+                                            <td><span class="viewMore" routerLink="/artist/artist-detail"><img
+                                                        src="assets/img/eye.png" alt=""></span></td>
 
-<!------------------------------------------ artist history needs to be a popup modal here -------------------------------------------->
-<!------------------------------------------------------------------------------------------------------------------------------------->
-                                    </tr>
+                                            <!------------------------------------------ artist history needs to be a popup modal here -------------------------------------------->
+                                            <!------------------------------------------------------------------------------------------------------------------------------------->
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -95,41 +103,54 @@
                     </div>
                 </div>
             </div>
-<!---------------------------------------------------- right section -------------------------------------------------------------->
+            <!---------------------------------------------------- right section -------------------------------------------------------------->
 
-<!---------------------------------------------------- Client behaviour area chart starts here ------------------------------------->
+            <!---------------------------------------------------- Client behaviour area chart starts here ------------------------------------->
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12 chart-bg">
                         <div class="row">
                             <div class="col-md-12"
-                                 style="display: flex; justify-content: space-between;  padding: 20px;">
+                                style="display: flex; justify-content: space-between;  padding: 20px;">
                                 <div>
-                                    <h4>Client Behaviour</h4></div>
+                                    <h4>Client Behaviour</h4>
+                                </div>
                                 <div class="head-btn" style="display:flex;">
                                     <button class="btn btn-primary month-btn">Monthly</button>
                                     <button class="btn btn-primary yearly-btn">Yearly</button>
                                 </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <apx-chart [series]="areaChartOptions.series" [chart]="areaChartOptions.chart"
+                                    [xaxis]="areaChartOptions.xaxis"
+                                    [dataLabels]="areaChartOptions.dataLabels"></apx-chart>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-<!----------------------------------------------------- end of client behaviour area chart ------------------------------>
+                <!----------------------------------------------------- end of client behaviour area chart ------------------------------>
 
-<!----------------------------------------------------- start of pic chart for customers and returning customers -------->
+                <!----------------------------------------------------- start of pic chart for customers and returning customers -------->
                 <div class="row" style="padding-top: 12px;">
                     <div class="col-md-12 chart-bg">
                         <div class="row">
                             <div class="col-md-12"
-                                 style="display: flex; justify-content: space-between;  padding: 20px;">
+                                style="display: flex; justify-content: space-between;  padding: 20px;">
                                 <div>
-                                    <h4>Returning Clients</h4></div>
+                                    <h4>Returning Clients</h4>
+                                </div>
                                 <div class="head-btn" style="display:flex;">
                                     <button class="btn btn-primary month-btn">Monthly</button>
                                     <button class="btn btn-primary yearly-btn">Yearly</button>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <apx-chart [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
+                                    [labels]="pieChartOptions.labels" [dataLabels]="pieChartOptions.dataLabels"
+                                    [responsive]="pieChartOptions.responsive"></apx-chart>
                             </div>
                         </div>
 
@@ -139,4 +160,3 @@
         </div>
     </div>
 </div>
-
