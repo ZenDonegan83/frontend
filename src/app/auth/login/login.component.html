@@ -1,34 +1,53 @@
-
 <section class="login-bg">
-    
-     <div class="logo-pos">
-      <img src="assets/img/Logo.png" alt="">
-     </div>
 
-     <span><img src="assets/img/box-1.png" class="img-fluid login-speape" alt=""></span>
-     <span><img src="assets/img/sheape2.png" class="img-fluid login-speape2" alt=""></span>
-<div class="container">
+    <div class="logo-pos">
+        <img src="assets/img/Logo.png" alt="">
+    </div>
 
-  <div class="card card-container">
-      <h2 class='login_title '><span class="welcome-txt"> Welcome</span><span class="back-txt ml-2">Back</span></h2>
-      <p class="plz-login">{{translation?.sub_title}}</p>
-  
+    <span><img src="assets/img/box-1.png" class="img-fluid login-speape" alt=""></span>
+    <span><img src="assets/img/sheape2.png" class="img-fluid login-speape2" alt=""></span>
+    <div class="container">
 
-      <form class="form-signin" autocomplete="off"  [formGroup]="loginForm"  (ngSubmit)="loginUser(loginForm)">
-          <span id="reauth-email" class="reauth-email"></span>
-           <div class="user-name">
-          <input type="text"  class="login_box" placeholder="{{translation?.login_form.username}}" formControlName="username" autocomplete="off">
-      </div>
-      <div class="password">
-          <input type="password"  class="login_box" placeholder="{{translation?.login_form.password}}" formControlName="password" autocomplete="off" >
-      </div>
-          <button   class="btn btn-lg btn-primary signin-btn"   type="submit">{{translation?.login_form.btn_signin}}</button>
+        <div class="card card-container">
+            <h2 class='login_title '><span class="welcome-txt"> Welcome</span><span class="back-txt ml-2">Back</span>
+            </h2>
+            <p class="plz-login">{{translation?.sub_title}}</p>
 
-          <a class="forgot-pass" [routerLink]="['/register']">
-              <img src="assets/img/password.png" alt="">
-             <span class="forgot-txt"  >{{translation?.forget}}</span></a>
-      </form><!-- /form -->
-  </div><!-- /card-container -->
-</div><!-- /container -->
+
+            <form class="form-signin" autocomplete=" new-password" [formGroup]="loginForm"
+                (ngSubmit)="loginUser(loginForm)">
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class="user-name">
+                    <input type="text" class="login_box" placeholder="{{translation?.login_form.username}}"
+                        [(ngModel)]="model.userName" formControlName="userName" autocomplete=" new-password" />
+                    <div *ngIf="loginForm.get('userName').invalid && submitted">
+                        <span class="text-danger" *ngIf="loginForm.get('userName').errors.required">User Name is
+                            required</span>
+                    </div>
+                </div>
+                <div class="password">
+                    <input type="password" class="login_box" placeholder="{{translation?.login_form.password}}"
+                        formControlName="password" autocomplete=" new-password" [(ngModel)]="model.password" />
+                    <div *ngIf=" loginForm.get('password').invalid && submitted">
+                        <span class="text-danger" *ngIf="loginForm.get('password').errors.required">Password is
+                            required</span>
+                    </div>
+                </div>
+                <button class="btn  btn-primary signin-btn"
+                    type="submit">{{translation?.login_form.btn_signin}}</button>
+                <div class="col-12" style="display: block;">
+
+                    <a class="forgot-pass" [routerLink]="['/register']">
+                        <img src="assets/img/password.png" alt="">
+                        <span class="forgot-txt">{{translation?.register ?? 'Register'}}</span></a>
+                    <a class="forgot-pass" [routerLink]="['/register']" style="margin-top: 10px;">
+                        <img src="assets/img/password.png" alt="">
+                        <span class="forgot-txt">{{translation?.forget}}</span></a>
+                </div>
+
+
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
 
 </section>
