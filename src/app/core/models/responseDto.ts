@@ -1,5 +1,9 @@
 export class ResponseDto {
-  appsErrorMessages: any[] = [];
-  result: any[] = [];
+  appsErrorMessages: errorMesg[] = [];
+  result: any | any[] = null;
   status: string;
+}
+
+class errorMesg {
+  errorMessage: string = "";
 }

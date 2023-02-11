@@ -4,6 +4,8 @@ import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 import { environment } from "environments/environment";
+import { ToastrService } from "ngx-toastr";
+import { ResponseDto } from "./../models/responseDto";
 const API_URL = `${environment.baseURL}`;
 @Injectable({
   providedIn: "root",
@@ -16,9 +18,23 @@ export class ApiService {
       Accept: "*/*",
     }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   private formatErrors(error: any) {
+    debugger;
+    if (error.error) {
+      let result: ResponseDto = error.error;
+      if (result.status == "FAILED") {
+        result.appsErrorMessages.forEach((s) => {
+          this.toastr.error(s.errorMessage);
+        });
+      } else {
+        this.toastr.error("Someting went wrong, please contact administrator.");
+      }
+    } else {
+      // this.toastr.error("Someting went wrong, please contact administrator.");
+    }
+
     return throwError(error.error);
   }
 
@@ -27,42 +43,49 @@ export class ApiService {
     const queryParams = this.prepareParams(params);
     return this.http
       .get(`${API_URL}${path}${queryParams}`, { headers })
-      .pipe(catchError(this.formatErrors));
+      .pipe(catchError((err) => this.formatErrors(err)));
   }
 
   // put(path: string, body: Object = {}, options: any = null): Observable<any> {
   //   return this.http
   //     .put(`${path}`, JSON.stringify(body), options ?? new HttpHeaders())
-  //     .pipe(catchError(this.formatErrors));
+  //     .pipe(catchError(err=>this.formatErrors(err,this.toastr)));
   // }
 
-  // post(path: string, body: Object = {}, options: any = null): Observable<any> {
+  // public post<T>(
+  //   path: string,
+  //   body: Object = {},
+  //   options: any = null
+  // ): Observable<T> {
   //   if (options === null) {
   //     options = this.httpOptions;
   //   }
+  //   debugger;
   //   return this.http
-  //     .post(`${path}`, JSON.stringify(body), options)
-  //     .pipe(catchError(this.formatErrors));
+  //     .post<T>(API_URL + `${path}`, JSON.stringify(body), options)
+  //     .pipe(catchError(err=>this.formatErrors(err,this.toastr)));
   // }
 
-  public post<T>(url, body): Observable<T> {
-    let headers = this.httpOptions.headers;
+  public post<T>(url, body, headers: any = null): Observable<T> {
+    if (headers === null) {
+      headers = this.httpOptions.headers;
+    }
     return this.http
       .post<T>(API_URL + url, body, { headers })
-      .pipe(catchError(this.formatErrors));
+      .pipe(catchError((err) => this.formatErrors(err)));
   }
 
   public put<T>(url, requestBody): Observable<T> {
     let headers = new HttpHeaders();
     return this.http
       .put<T>(API_URL + url, requestBody, { headers })
-      .pipe(catchError(this.formatErrors));
+      .pipe(catchError((err) => this.formatErrors(err)));
   }
 
   delete(path: any, options: any = null): Observable<any> {
     return this.http
       .delete(`${path}`, options ?? new HttpHeaders())
-      .pipe(catchError(this.formatErrors));
+      .pipe(catchError((err) => this.formatErrors(err)));
   }
 
   // public delete<T>(url, id: number | string): Observable<any> {

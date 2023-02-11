@@ -19,9 +19,9 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <div class="user-name">
                     <input type="text" class="login_box" placeholder="{{translation?.login_form.username}}"
-                        [(ngModel)]="model.userName" formControlName="userName" autocomplete=" new-password" />
-                    <div *ngIf="loginForm.get('userName').invalid && submitted">
-                        <span class="text-danger" *ngIf="loginForm.get('userName').errors.required">User Name is
+                        [(ngModel)]="model.username" formControlName="username" autocomplete=" new-password" />
+                    <div *ngIf="loginForm.get('username').invalid && submitted">
+                        <span class="text-danger" *ngIf="loginForm.get('username').errors.required">User Name is
                             required</span>
                     </div>
                 </div>
