@@ -15,7 +15,7 @@ export class ArtistComponent implements OnInit {
   q: any;
   itemsPerPage = 5;
   currentPage = 1;
-  term: any;
+  public term: any;
 
   public data: any[] = [
     {
@@ -64,6 +64,7 @@ export class ArtistComponent implements OnInit {
   selectedLanguage: any = "en";
   translation: any = [];
   actions: any = [];
+  dtOptions: DataTables.Settings = {};
 
   constructor(
     public dialog: MatDialog,
@@ -73,6 +74,11 @@ export class ArtistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: "full_numbers",
+      pageLength: 6,
+    };
+
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
@@ -81,9 +87,9 @@ export class ArtistComponent implements OnInit {
       });
     });
 
-    this._service.getAll().subscribe((result) => {
-      debugger;
-    });
+    // this._service.getAll().subscribe((result) => {
+    //   debugger;
+    // });
   }
 
   openartistModel() {
