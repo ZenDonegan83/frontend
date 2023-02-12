@@ -1,7 +1,27 @@
+import { UserSessionDto } from "../models/userSessionDto";
+
 export class commonUtil {
-  public static myProp = "Hello";
-  public static doSomething(): string {
-    return "World";
+  private static _userSession?: UserSessionDto | null | undefined = null;
+  static set userSession(obj: UserSessionDto | null | undefined) {
+    if (!obj) {
+      this.removeUserSession();
+    } else {
+      this.setUserSession(obj);
+    }
+    this._userSession = obj;
+  }
+  static get userSession(): UserSessionDto | null | undefined {
+    if (this._userSession) {
+      return this._userSession;
+    } else if (this.getUserSession()) {
+      this._userSession = this.getUserSession();
+    }
+    return this._userSession;
+  }
+
+  public static isLoggedIn(): boolean {
+    if (this.userSession && this.userSession.artistID) return true;
+    else return false;
   }
 
   public static convertModelToFormData(
@@ -30,5 +50,24 @@ export class commonUtil {
       else formData.append(formKey, model[propertyName].toString());
     }
     return formData;
+  }
+
+  public static setLoggedInSession(userSession: UserSessionDto) {
+    commonUtil.userSession = userSession;
+  }
+  public static setLoggedOutInSession() {
+    commonUtil.userSession = null;
+  }
+  public static setUserSession(userSession: UserSessionDto) {
+    localStorage.setItem("UserSession", JSON.stringify(userSession));
+  }
+  public static removeUserSession() {
+    localStorage.removeItem("UserSession");
+  }
+  public static getUserSession(): UserSessionDto | null {
+    try {
+      return JSON.parse(localStorage.getItem("UserSession"));
+    } catch (err) {}
+    return null;
   }
 }

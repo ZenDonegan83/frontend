@@ -3,6 +3,7 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { TranslationService } from "../../core/services/transalation.service";
 import { ROUTES } from "../sidenav/sidenav.component";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-toolbar",
@@ -53,7 +54,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem("userSession");
+    commonUtil.setLoggedOutInSession();
     this.route.navigate(["login"]);
   }
   sidebarOpen() {

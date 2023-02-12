@@ -8,33 +8,31 @@ import { ResponseDto } from "../models/responseDto";
 @Injectable({
   providedIn: "root",
 })
-export class ArtistService {
-  baseUrl: string = "/users/";
+export class ClientService {
+  baseUrl: string = "/customer/";
   constructor(private api: ApiService) {}
 
   public CreateOrUpdate(entity: any): Observable<ResponseDto> {
     if (isNaN(entity.artistID) || entity.artistID == 0)
       return this.api.postWithFile<ResponseDto>(
-        this.baseUrl + "sign-up",
+        this.baseUrl + "saveCustomer",
         entity
       );
     else
       return this.api.putWithFile<ResponseDto>(
-        this.baseUrl + "updateUser/" + entity.artistID,
+        this.baseUrl + "updateCustomer/" + entity.artistID,
         entity
       );
   }
 
-  public SignIn(entity: any): Observable<ResponseDto> {
-    return this.api.post<ResponseDto>(this.baseUrl + "sign-in", entity);
-    // .pipe(map((res: { data }) => res.data));
-  }
-
   public getAll(): Observable<ResponseDto> {
-    return this.api.get(this.baseUrl + `allUsers`);
+    return this.api.get(this.baseUrl + `allCustomers`);
   }
 
   public getById(id: any): Observable<any> {
-    return this.api.get(this.baseUrl + `getById?Id=${id}`);
+    return this.api.get(this.baseUrl + `findByID/${id}`);
+  }
+  public delete(id: any): Observable<any> {
+    return this.api.delete(this.baseUrl + `delete/${id}`);
   }
 }

@@ -5,6 +5,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { TranslationService } from "../../../core/services/transalation.service";
 import { ArtistService } from "app/core/services/artist.service";
 import { ToastrService } from "ngx-toastr";
+import { UserSessionDto } from "./../../../core/models/userSessionDto";
 
 @Component({
   selector: "app-artist",
@@ -64,7 +65,6 @@ export class ArtistComponent implements OnInit {
   selectedLanguage: any = "en";
   translation: any = [];
   actions: any = [];
-  dtOptions: DataTables.Settings = {};
 
   constructor(
     public dialog: MatDialog,
@@ -74,11 +74,6 @@ export class ArtistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: "full_numbers",
-      pageLength: 6,
-    };
-
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
@@ -87,19 +82,61 @@ export class ArtistComponent implements OnInit {
       });
     });
 
-    // this._service.getAll().subscribe((result) => {
-    //   debugger;
-    // });
+    this.getList();
   }
 
-  openartistModel() {
+  getList() {
+    this._service.getAll().subscribe((result) => {
+      if (result.status == "SUCCESS") {
+        this.data = result.result;
+      } else if (result.status == "FAILED") {
+        result.appsErrorMessages.forEach((s) => {
+          this.toastr.error(s.errorMessage);
+        });
+      } else {
+        this.toastr.error("Someting went wrong during register user");
+      }
+    });
+  }
+  openModal() {
     const dialogRef = this.dialog.open(AddArtistComponent, {
       width: "80rem",
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      debugger;
+      this.getList();
+      console.log(`Dialog result: ${result}`); // Pizza!
+    });
   }
-  opendeleteModel() {
+  editModal(item: UserSessionDto) {
+    const dialogRef = this.dialog.open(AddArtistComponent, {
+      width: "80rem",
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      debugger;
+      this.getList();
+      console.log(`Dialog result: ${result}`); // Pizza!
+    });
+  }
+  ViewModal(item: UserSessionDto) {
+    const dialogRef = this.dialog.open(AddArtistComponent, {
+      width: "80rem",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+    });
+  }
+  deleteModel(item: UserSessionDto) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: "80rem",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getList();
+      console.log(`Dialog result: ${result}`); // Pizza!
     });
   }
 }

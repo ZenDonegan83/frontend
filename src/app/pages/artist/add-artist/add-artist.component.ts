@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TranslationService } from "../../../core/services/transalation.service";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ArtistService } from "./../../../core/services/artist.service";
 import { ToastrService } from "ngx-toastr";
 import { AccountService } from "./../../../core/services/account.service";
 import { commonUtil } from "app/core/utils/commonUtil";
+import { UserSessionDto } from "./../../../core/models/userSessionDto";
 
 @Component({
   selector: "app-add-artist",
@@ -23,6 +24,7 @@ export class AddArtistComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: UserSessionDto,
     private translationService: TranslationService,
     private _service: ArtistService,
     private toastr: ToastrService
@@ -38,6 +40,15 @@ export class AddArtistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.data && this.data.artistID > 0) {
+      this.artistForm.patchValue({
+        firstName: this.data.firstName,
+        lastName: this.data.lastName,
+        email: this.data.email,
+        username: this.data.username,
+        password: this.data.password,
+      });
+    }
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
@@ -47,19 +58,25 @@ export class AddArtistComponent implements OnInit {
   }
 
   addArtist(artistForm: FormGroup) {
-    debugger;
     this.submitted = true;
     if (!artistForm.invalid) {
-      console.log("addEventform values", this.artistForm.value);
       this.submitted = false;
 
-      let formData = new FormData();
-      formData.append("profilePic", this.file);
-      formData = commonUtil.convertModelToFormData(artistForm.value, formData);
-      this._service.CreateOrUpdate(formData).subscribe((result) => {
+      let request: any = artistForm.value;
+      if (this.file) {
+        request = new FormData();
+        request.append("profilePic", this.file);
+        request = commonUtil.convertModelToFormData(artistForm.value, request);
+      }
+
+      if (this.data && this.data.artistID > 0) {
+        request.artistID = this.data.artistID;
+      }
+
+      this._service.CreateOrUpdate(request).subscribe((result) => {
         if (result) {
           if (result.status == "SUCCESS") {
-            this.toastr.success("Artist created Successfully!");
+            this.toastr.success("Artist created successfully!");
             this.closeModal();
           } else if (result.status == "FAILED") {
             result.appsErrorMessages.forEach((s) => {
@@ -78,7 +95,6 @@ export class AddArtistComponent implements OnInit {
     this.dialogRef.closeAll();
   }
   onFileChange(event: any) {
-    debugger;
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {

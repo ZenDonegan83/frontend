@@ -8,6 +8,7 @@ import { uniqueUserNameValidator } from "./../../core/validators/uniqueUserNameV
 import { RegisterDto } from "../../core/models/registerDto";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-registration",
@@ -75,7 +76,11 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (commonUtil.isLoggedIn()) {
+      this.route.navigate(["dashboard"]);
+    }
+  }
   registerUser(registerForm: FormGroup) {
     this.submitted = true;
     if (!registerForm.invalid) {

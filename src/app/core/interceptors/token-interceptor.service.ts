@@ -1,21 +1,34 @@
-import { Injectable ,Injector} from '@angular/core';
-import { HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
+import { commonUtil } from "app/core/utils/commonUtil";
+import { Observable } from "rxjs";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class TokenInterceptorService  implements HttpInterceptor{
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    let headers: any = {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+    };
 
-  constructor(private injector:Injector) { }
+    if (commonUtil.isLoggedIn()) {
+      headers.Authorization = `Bearer ${
+        commonUtil.isLoggedIn() ? commonUtil.userSession.accessToken : ""
+      }`;
+    }
+    req = req.clone({
+      setHeaders: headers,
+    });
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    let tokenizedReq = req.clone({
-
-      setHeaders :{
-        Authorization : 'Bearer xx.yy.zz'
-      }
-    })
-    return next.handle(tokenizedReq)
+    return next.handle(req);
   }
 }

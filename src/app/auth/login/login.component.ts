@@ -5,6 +5,7 @@ import { LoginDto } from "app/core/models/loginDto";
 import { AccountService } from "app/core/services/account.service";
 import { TranslationService } from "../../core/services/transalation.service";
 import { ToastrService } from "ngx-toastr";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-login",
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (commonUtil.isLoggedIn()) {
+      this.route.navigate(["dashboard"]);
+    }
+
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
@@ -43,9 +48,11 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (!loginForm.invalid) {
       this.submitted = false;
+      debugger;
       this._service.SignIn(this.model).subscribe((result) => {
+        debugger;
         if (result && result.status == "SUCCESS") {
-          localStorage.setItem("userSession", JSON.stringify(result.result));
+          commonUtil.setLoggedInSession(result.result);
           localStorage.setItem("token", loginForm.value.username);
           this.toastr.success("Login Success!");
           this.route.navigate(["dashboard"]);

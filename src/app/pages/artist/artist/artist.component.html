@@ -3,6 +3,7 @@
         <div class="table-box">
             <div class="row">
                 <div class="col-md-12 clients-list">
+
                     <div class="row">
                         <div class="col-md-12">
                             <p class="table-heading">{{translation?.title}}</p>
@@ -13,10 +14,14 @@
                             <div>
                                 <input type="search" class="search-styl" placeholder="Search" [(ngModel)]="term">
                                 <button class="btn btn-primary add-btn"
-                                    (click)="openartistModel()">{{translation?.btn_add}}</button>
+                                    (click)="openModal()">{{translation?.btn_add}}</button>
                             </div>
                         </div>
                     </div>
+
+
+
+
                 </div>
             </div>
 
@@ -41,10 +46,11 @@
                         <tbody>
                             <tr *ngFor="let item of data|filter:term| paginate: { itemsPerPage: 5,currentPage: q }">
                                 <td><span><img class="profile" src="assets/img/Profile.png" alt=""></span></td>
+                                <td><span>{{item.username}}</span></td>
                                 <td><span>{{item.firstName}}</span></td>
                                 <td><span>{{item.lastName}} </span></td>
                                 <td><span> {{item.email}}</span></td>
-                                <td><span class="cell-no">{{item.contactNumber}} </span></td>
+                                <!-- <td><span class="cell-no">{{item.contactNumber}} </span></td> -->
                                 <td><span class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             <img class="expend" src="assets/img/expend.png" alt="">
@@ -52,11 +58,11 @@
 
                                         </a>
                                         <ul class="dropdown-menu drop-styl">
-                                            <li><a routerLink="artist-detail"> <i class="fa fa-eye"
-                                                        aria-hidden="true"></i>{{actions[0]}}</a></li>
-                                            <li><a (click)="openartistModel()"><i class="fa fa-pencil"
+                                            <li><a routerLink="artist-detail" (click)="viewModal(item)"> <i
+                                                        class="fa fa-eye" aria-hidden="true"></i>{{actions[0]}}</a></li>
+                                            <li><a (click)="editModal(item)"><i class="fa fa-pencil"
                                                         aria-hidden="true"></i>{{actions[1]}}</a></li>
-                                            <li><a (click)="  opendeleteModel()"><i class="fa fa-trash-o"
+                                            <li><a (click)="deleteModal(item)"><i class="fa fa-trash-o"
                                                         aria-hidden="true"></i>{{actions[2]}}</a></li>
 
 

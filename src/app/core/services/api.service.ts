@@ -6,6 +6,7 @@ import { catchError } from "rxjs/operators";
 import { environment } from "environments/environment";
 import { ToastrService } from "ngx-toastr";
 import { ResponseDto } from "./../models/responseDto";
+import { commonUtil } from "app/core/utils/commonUtil";
 const API_URL = `${environment.baseURL}`;
 @Injectable({
   providedIn: "root",
@@ -42,7 +43,7 @@ export class ApiService {
     let headers = this.httpOptions.headers;
     const queryParams = this.prepareParams(params);
     return this.http
-      .get(`${API_URL}${path}${queryParams}`, { headers })
+      .get(`${API_URL}${path}${queryParams}`)
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 
@@ -68,17 +69,43 @@ export class ApiService {
 
   public post<T>(url, body, headers: any = null): Observable<T> {
     if (headers === null) {
-      headers = this.httpOptions.headers;
+      headers = new HttpHeaders();
     }
     return this.http
-      .post<T>(API_URL + url, body, { headers })
+      .post<T>(API_URL + url, body)
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 
-  public put<T>(url, requestBody): Observable<T> {
-    let headers = new HttpHeaders();
+  public postWithFile<T>(url, body, headers: any = null): Observable<T> {
+    if (headers === null) {
+      headers = new HttpHeaders();
+    }
     return this.http
-      .put<T>(API_URL + url, requestBody, { headers })
+      .post<T>(API_URL + url, body, {
+        reportProgress: true,
+        responseType: "json",
+      })
+      .pipe(catchError((err) => this.formatErrors(err)));
+  }
+
+  public put<T>(url, body, headers: any = null): Observable<T> {
+    if (headers === null) {
+      headers = new HttpHeaders();
+    }
+    return this.http
+      .put<T>(API_URL + url, body)
+      .pipe(catchError((err) => this.formatErrors(err)));
+  }
+
+  public putWithFile<T>(url, body, headers: any = null): Observable<T> {
+    if (headers === null) {
+      headers = new HttpHeaders();
+    }
+    return this.http
+      .put<T>(API_URL + url, body, {
+        reportProgress: true,
+        responseType: "json",
+      })
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 
