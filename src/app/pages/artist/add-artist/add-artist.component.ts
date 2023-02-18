@@ -7,6 +7,7 @@ import { ToastrService } from "ngx-toastr";
 import { AccountService } from "./../../../core/services/account.service";
 import { commonUtil } from "app/core/utils/commonUtil";
 import { UserSessionDto } from "./../../../core/models/userSessionDto";
+import { CommonService } from "./../../../core/services/common.service";
 
 @Component({
   selector: "app-add-artist",
@@ -27,14 +28,14 @@ export class AddArtistComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: UserSessionDto,
     private translationService: TranslationService,
     private _service: ArtistService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _commonService: CommonService
   ) {
     this.artistForm = this.fb.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       username: ["", Validators.required],
-      number: ["", Validators.required],
       password: ["", Validators.required],
     });
   }
@@ -58,14 +59,15 @@ export class AddArtistComponent implements OnInit {
   }
 
   addArtist(artistForm: FormGroup) {
+    debugger;
     this.submitted = true;
     if (!artistForm.invalid) {
       this.submitted = false;
-
+      debugger;
       let request: any = artistForm.value;
       if (this.file) {
         request = new FormData();
-        request.append("profilePic", this.file);
+        request.append("image", this.file);
         request = commonUtil.convertModelToFormData(artistForm.value, request);
       }
 
@@ -104,6 +106,27 @@ export class AddArtistComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageSrc = reader.result as string;
+        debugger;
+        if (this.file) {
+          var request = new FormData();
+          request.append("image", this.file);
+          this._commonService.uploadFile(request).subscribe((result) => {
+            debugger;
+            if (result) {
+              if (result.status == "SUCCESS") {
+                this.toastr.success("Image uploaded successfully!");
+              } else if (result.status == "FAILED") {
+                result.appsErrorMessages.forEach((s) => {
+                  this.toastr.error(s.errorMessage);
+                });
+              } else {
+                this.toastr.error("Someting went wrong during register user");
+              }
+            } else {
+              this.toastr.error("Someting went wrong during register user");
+            }
+          });
+        }
       };
     }
   }

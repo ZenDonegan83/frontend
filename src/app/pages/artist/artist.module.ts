@@ -7,6 +7,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddArtistComponent } from "./add-artist/add-artist.component";
 import { ArtistSessionHistoryComponent } from "./artist-session-history/artist-session-history.component";
+import { ViewArtistComponent } from './view-artist/view-artist.component';
 
 
 
@@ -14,7 +15,8 @@ import { ArtistSessionHistoryComponent } from "./artist-session-history/artist-s
   declarations: [
     ArtistComponent,
     AddArtistComponent,
-    ArtistSessionHistoryComponent
+    ArtistSessionHistoryComponent,
+    ViewArtistComponent
     ],
   imports: [
     CommonModule,

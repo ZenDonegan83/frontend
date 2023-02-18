@@ -65,16 +65,14 @@
                         required</span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <input type="text" formControlName="number" class="form-control artist-input"
                     placeholder="{{translation?.number}}" autocomplete=" new-password">
                 <div *ngIf="artistForm.get('number').invalid && submitted">
                     <span class="text-danger" *ngIf="artistForm.get('number').errors.required">Telephone is
                         required</span>
                 </div>
-            </div>
-        </div>
-        <div class="row form-margin">
+            </div> -->
             <div class="col-md-6">
                 <input type="email" formControlName="email" class="form-control artist-input"
                     placeholder="{{translation?.email}}" autocomplete=" new-password">
@@ -85,6 +83,9 @@
                         valid</span>
                 </div>
             </div>
+        </div>
+        <div class="row form-margin">
+
             <div class="col-md-6">
                 <input type="password" formControlName="password" class="form-control artist-input"
                     placeholder="{{translation?.password}}" autocomplete=" new-password">

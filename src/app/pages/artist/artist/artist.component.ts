@@ -6,6 +6,8 @@ import { TranslationService } from "../../../core/services/transalation.service"
 import { ArtistService } from "app/core/services/artist.service";
 import { ToastrService } from "ngx-toastr";
 import { UserSessionDto } from "./../../../core/models/userSessionDto";
+import { ViewArtistComponent } from "./../view-artist/view-artist.component";
+import { ArtistSessionHistoryComponent } from "./../artist-session-history/artist-session-history.component";
 
 @Component({
   selector: "app-artist",
@@ -103,32 +105,37 @@ export class ArtistComponent implements OnInit {
       width: "80rem",
     });
     dialogRef.afterClosed().subscribe((result) => {
-      debugger;
       this.getList();
       console.log(`Dialog result: ${result}`); // Pizza!
     });
   }
   editModal(item: UserSessionDto) {
+    if (item && item.password) {
+      item.password = "***";
+    }
     const dialogRef = this.dialog.open(AddArtistComponent, {
       width: "80rem",
       data: item,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      debugger;
       this.getList();
       console.log(`Dialog result: ${result}`); // Pizza!
     });
   }
-  ViewModal(item: UserSessionDto) {
-    const dialogRef = this.dialog.open(AddArtistComponent, {
-      width: "80rem",
-    });
+  viewModal(item: UserSessionDto) {
+    if (item && item.artistID > 0) {
+      const dialogRef = this.dialog.open(ViewArtistComponent, {
+        width: "100rem",
+        data: item,
+      });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
-    });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`); // Pizza!
+      });
+    }
   }
+
   deleteModel(item: UserSessionDto) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: "80rem",

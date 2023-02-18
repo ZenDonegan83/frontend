@@ -109,6 +109,19 @@ export class ApiService {
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 
+  public uploadFile<T>(url, body, headers: any = null): Observable<T> {
+    if (headers === null) {
+      headers = new HttpHeaders();
+    }
+    return this.http
+      .post<T>(API_URL + url, body, {
+        reportProgress: true,
+        responseType: "json",
+      })
+      .pipe(catchError((err) => this.formatErrors(err)));
+  }
+
+  // http://localhost:8080/api/storage/uploadImage
   delete(path: any, options: any = null): Observable<any> {
     return this.http
       .delete(`${path}`, options ?? new HttpHeaders())
