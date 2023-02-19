@@ -23,12 +23,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" class="form-control inputstyl profile"
-                                            formControlName="userName" autocomplete="new-password"
-                                            [(ngModel)]="model.userName"
-                                            placeholder="{{translation?.register_form.userName ?? 'User Name'}}">
-                                        <div *ngIf="registerForm.get('userName').invalid && submitted">
+                                            formControlName="username" autocomplete="new-password"
+                                            [(ngModel)]="model.username"
+                                            placeholder="{{translation?.register_form.username ?? 'User Name'}}">
+                                        <div *ngIf="registerForm.get('username').invalid && submitted">
                                             <span class="text-danger"
-                                                *ngIf="registerForm.get('userName').errors.required">User Name is
+                                                *ngIf="registerForm.get('username').errors.required">User Name is
                                                 required</span>
                                         </div>
                                     </div>

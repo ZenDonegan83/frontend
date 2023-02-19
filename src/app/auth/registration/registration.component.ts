@@ -7,6 +7,8 @@ import { TranslationService } from "../../core/services/transalation.service";
 import { uniqueUserNameValidator } from "./../../core/validators/uniqueUserNameValidator";
 import { RegisterDto } from "../../core/models/registerDto";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-registration",
@@ -46,14 +48,14 @@ export class RegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private translationService: TranslationService,
-    private http: HttpClient,
-    private _service: AccountService
+    private _service: AccountService,
+    private toastr: ToastrService
   ) {
     this.registerForm = this.fb.group({
-      userName: [
+      username: [
         "",
         [Validators.required],
-        [uniqueUserNameValidator(_service)],
+        // [uniqueUserNameValidator(_service)],
       ],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
@@ -61,7 +63,7 @@ export class RegistrationComponent implements OnInit {
       email: [
         "",
         [Validators.required, Validators.email],
-        [uniqueEmailValidator(_service)],
+        // [uniqueEmailValidator(_service)],
       ],
       password: ["", Validators.required],
     });
@@ -75,24 +77,30 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
+    if (commonUtil.isLoggedIn()) {
+      this.route.navigate(["dashboard"]);
+    }
   }
   registerUser(registerForm: FormGroup) {
-    debugger;
     this.submitted = true;
     if (!registerForm.invalid) {
-      debugger;
       this.submitted = false;
       this._service.Register(this.model).subscribe((result) => {
-        // if (result.IsSuccess) {
-        //   this.loader.HideLoader();
-        //   this.toastr.Success(result.Message);
-        //   localStorage.setItem("email", this.model.Email);
-        //   this._router.navigate(["/confirmemail"]);
-        // } else {
-        //   this.loader.HideLoader();
-        //   this.toastr.Error("Error", result.ErrorMessage);
-        // }
+        debugger;
+        if (result) {
+          if (result.status == "SUCCESS") {
+            this.toastr.success("Register Successfully!");
+            this.route.navigate(["login"]);
+          } else if (result.status == "FAILED") {
+            result.appsErrorMessages.forEach((s) => {
+              this.toastr.error(s.errorMessage);
+            });
+          } else {
+            this.toastr.error("Someting went wrong during register user");
+          }
+        } else {
+          this.toastr.error("Someting went wrong during register user");
+        }
       });
     }
   }
