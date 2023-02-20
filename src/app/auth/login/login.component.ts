@@ -5,6 +5,7 @@ import { LoginDto } from "app/core/models/loginDto";
 import { AccountService } from "app/core/services/account.service";
 import { TranslationService } from "../../core/services/transalation.service";
 import { ToastrService } from "ngx-toastr";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-login",
@@ -25,12 +26,16 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
-      userName: ["", Validators.required],
+      username: ["", Validators.required],
       password: ["", Validators.required],
     });
   }
 
   ngOnInit(): void {
+    if (commonUtil.isLoggedIn()) {
+      this.route.navigate(["dashboard"]);
+    }
+
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
       this.translationService.get().subscribe((data: any) => {
@@ -42,28 +47,18 @@ export class LoginComponent implements OnInit {
   loginUser(loginForm: FormGroup) {
     this.submitted = true;
     if (!loginForm.invalid) {
-      debugger;
       this.submitted = false;
+      debugger;
       this._service.SignIn(this.model).subscribe((result) => {
         debugger;
         if (result && result.status == "SUCCESS") {
-          localStorage.setItem("userSession", result);
+          commonUtil.setLoggedInSession(result.result);
           localStorage.setItem("token", loginForm.value.username);
           this.toastr.success("Login Success!");
           this.route.navigate(["dashboard"]);
         } else {
-          this.toastr.error("Username or password incorrect");
+          this.toastr.error("username or password incorrect");
         }
-
-        // if (result.IsSuccess) {
-        //   this.loader.HideLoader();
-        //   this.toastr.Success(result.Message);
-        //   localStorage.setItem("email", this.model.Email);
-        //   this._router.navigate(["/confirmemail"]);
-        // } else {
-        //   this.loader.HideLoader();
-        //   this.toastr.Error("Error", result.ErrorMessage);
-        // }
       });
     }
   }

@@ -17,6 +17,7 @@ import { LayoutModule } from "./pages/layout/layout.module";
 import { ApiService } from "./core/services/api.service";
 import { HTTPInterceptorService } from "./core/interceptors/http-interceptor.service";
 import { ToastrModule } from "ngx-toastr";
+import { TokenInterceptor } from "./core/interceptors/token-interceptor.service";
 
 @NgModule({
   imports: [
@@ -32,15 +33,20 @@ import { ToastrModule } from "ngx-toastr";
     ToastrModule.forRoot(), // ToastrModule added
   ],
   declarations: [AppComponent, LayoutComponent, ErrorComponent],
-  // providers: [
-  //   ApiService,
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: HTTPInterceptorService,
-  //     multi: true,
-  //   },
-  //   // { provide: NZ_I18N, useValue: en_US },
-  // ],
+  providers: [
+    ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: HTTPInterceptorService,
+    //   multi: true,
+    // },
+    // { provide: NZ_I18N, useValue: en_US },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
