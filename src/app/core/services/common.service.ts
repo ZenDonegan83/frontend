@@ -10,6 +10,6 @@ export class CommonService {
   constructor(private api: ApiService) {}
 
   public uploadFile(file: any): Observable<ResponseDto> {
-    return this.api.post<ResponseDto>("/storage/uploadImage", file);
+    return this.api.uploadFile<ResponseDto>("/storage/uploadImage", file);
   }
 }

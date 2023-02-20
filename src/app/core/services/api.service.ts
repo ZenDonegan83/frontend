@@ -114,10 +114,14 @@ export class ApiService {
       headers = new HttpHeaders();
     }
     return this.http
-      .post<T>(API_URL + url, body, {
-        reportProgress: true,
-        responseType: "json",
-      })
+      .post<T>(
+        API_URL + url,
+        body
+        // {
+        //   reportProgress: true,
+        //   responseType: "json",
+        // }
+      )
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 

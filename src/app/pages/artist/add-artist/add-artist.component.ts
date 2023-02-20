@@ -109,7 +109,7 @@ export class AddArtistComponent implements OnInit {
         debugger;
         if (this.file) {
           var request = new FormData();
-          request.append("image", this.file);
+          request.append("file", this.file);
           this._commonService.uploadFile(request).subscribe((result) => {
             debugger;
             if (result) {
