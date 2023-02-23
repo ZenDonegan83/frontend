@@ -5,16 +5,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="img-styl">
-
-                        <div class="form-group" *ngIf="isSelected">
-                            <label class="upload-labal" for="file"><img class="img-profile"
-                                    src="assets/img/client-profile.png" alt=""></label>
-                            <input id="file" name="photo" type="file" class="form-control uploadFile"
-                                (change)="onFileChange($event)" accept="image/*" />
+                        <div class="form-group">
+                            <label class="upload-labal" for="file" onclick="onFileClick()">
+                                <img class="img-profile" style="width: 93px; height: 93px;border-radius: 45%;"
+                                    [src]="profilePic ?? imageSrc ?? 'assets/img/client-profile.png'" alt="" />
+                                <input id="file" name="photo" id="file" type="file" class="form-control uploadFile"
+                                    (change)="onFileChange($event)" accept="image/*" />
+                                <!-- <img class="img-profile" [src]="profilePic" src="assets/img/client-profile.png" alt="" /> -->
+                                <img class="edit-profile" src="assets/img/edit-profile.png" alt="" />
+                            </label>
+                            <!-- <img [src]="profilePic" *ngIf="imageSrc || profilePic" class="img-pos"> -->
                         </div>
-                        <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
                     </div>
-                    <img class="edit-profile" src="assets/img/edit-profile.png" alt="">
                 </div>
                 <div class="col-md-4">
                     <!-- <p  class="artist-text"  >Add Artist Detail</p> -->

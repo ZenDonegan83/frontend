@@ -8,6 +8,7 @@ import { AccountService } from "./../../../core/services/account.service";
 import { commonUtil } from "app/core/utils/commonUtil";
 import { UserSessionDto } from "./../../../core/models/userSessionDto";
 import { CommonService } from "./../../../core/services/common.service";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-add-artist",
@@ -22,6 +23,7 @@ export class AddArtistComponent implements OnInit {
   translation: any;
   submitted: boolean = false;
   file?: any = null;
+  profilePic: any = null;
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialog,
@@ -29,7 +31,8 @@ export class AddArtistComponent implements OnInit {
     private translationService: TranslationService,
     private _service: ArtistService,
     private toastr: ToastrService,
-    private _commonService: CommonService
+    private _commonService: CommonService,
+    private sanitizer: DomSanitizer
   ) {
     this.artistForm = this.fb.group({
       firstName: ["", Validators.required],
@@ -37,6 +40,7 @@ export class AddArtistComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       username: ["", Validators.required],
       password: ["", Validators.required],
+      profilePicURL: [""],
     });
   }
 
@@ -49,6 +53,24 @@ export class AddArtistComponent implements OnInit {
         username: this.data.username,
         password: this.data.password,
       });
+
+      debugger;
+      if (this.data.profilePicURL) {
+        this._commonService
+          .getFile(this.data.profilePicURL)
+          .subscribe((data: any) => {
+            debugger;
+            const reader = new FileReader();
+            reader.onload = (e) => (this.profilePic = e.target.result);
+            reader.readAsDataURL(new Blob([data]));
+            // let objectURL = "data:image/png;base64," + data;
+            // this.profilePic = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+
+            // var urlCreator = window.URL || window.webkitURL;
+            // var imageUrl = urlCreator.createObjectURL(data);
+            // this.profilePic = data;
+          });
+      }
     }
     this.translationService.language.subscribe((res: any) => {
       this.selectedLanguage = res;
@@ -58,6 +80,10 @@ export class AddArtistComponent implements OnInit {
     });
   }
 
+  onFileClick() {
+    document.getElementById("file").click();
+  }
+
   addArtist(artistForm: FormGroup) {
     debugger;
     this.submitted = true;
@@ -65,11 +91,11 @@ export class AddArtistComponent implements OnInit {
       this.submitted = false;
       debugger;
       let request: any = artistForm.value;
-      if (this.file) {
-        request = new FormData();
-        request.append("image", this.file);
-        request = commonUtil.convertModelToFormData(artistForm.value, request);
-      }
+      // if (this.file) {
+      //   request = new FormData();
+      //   request.append("file", this.file);
+      //   request = commonUtil.convertModelToFormData(artistForm.value, request);
+      // }
 
       if (this.data && this.data.artistID > 0) {
         request.artistID = this.data.artistID;
@@ -114,6 +140,10 @@ export class AddArtistComponent implements OnInit {
             debugger;
             if (result) {
               if (result.status == "SUCCESS") {
+                this.profilePic = null;
+                this.artistForm.patchValue({
+                  profilePicURL: result.result,
+                });
                 this.toastr.success("Image uploaded successfully!");
               } else if (result.status == "FAILED") {
                 result.appsErrorMessages.forEach((s) => {

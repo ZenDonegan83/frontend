@@ -70,4 +70,12 @@ export class commonUtil {
     } catch (err) {}
     return null;
   }
+
+  public static isUserLoggedIn(): boolean {
+    // return true;
+    if (commonUtil.userSession && commonUtil.userSession?.username) {
+      return true;
+    }
+    return false;
+  }
 }

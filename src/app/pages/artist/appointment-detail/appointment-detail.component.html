@@ -1,0 +1,97 @@
+<h1 mat-dialog-title>Appointment Detail</h1>
+<div mat-dialog-content>
+    <div class="row artists-head" style="color:white !important;">
+        <div class="col-md-12">
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-sm-3" style="text-align: center;">
+                    <img src="../../../assets/img/Logo.png" style="width: 100px;height: 100px;" />
+                </div>
+                <div class="col-sm-7">
+                    <section class="example-section text-right">
+                        <mat-checkbox class="example-margin" color="white"
+                            [checked]="data.reschedule != 'N'">Validated</mat-checkbox>
+                        &nbsp;&nbsp;
+                        <mat-checkbox class="example-margin" color="white" [checked]="data.noShow != 'N'">Now
+                            Show</mat-checkbox>&nbsp;&nbsp;
+                        <mat-checkbox class="example-margin" color="white"
+                            [checked]="data.cancelled != 'N'">Cancelled</mat-checkbox>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="staticName" class="col-sm-12 col-form-label text-success">Artist</label>
+                    <div class="col-sm-12">
+                        <label for="staticName" class="col-form-label">{{data.userDTO.firstName}}
+                            {{data.userDTO.lastName}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="staticEmail" class="col-sm-12 col-form-label text-success">Client</label>
+                    <div class="col-sm-12">
+                        <label for="staticEmail" class="col-form-label">{{data.customerDTO.firstName}}
+                            {{data.customerDTO.lastName}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="staticPhone" class="col-sm-12 col-form-label text-success">Price</label>
+                    <div class="col-sm-12">
+                        <label for="staticPhone" class="col-form-label">{{data.cost}}</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mb-5">
+                <div class="col-sm-4">
+                    <label for="staticName" class="col-sm-12 col-form-label text-success">Date</label>
+                    <div class="col-sm-12">
+                        <label for="staticName" class="col-form-label">{{data.startDateStr}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="staticEmail" class="col-sm-12 col-form-label text-success">Email</label>
+                    <div class="col-sm-12">
+                        <label for="staticEmail" class="col-form-label">{{data.customerDTO.email}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="staticPhone" class="col-sm-12 col-form-label text-success">Images</label>
+                    <div class="col-sm-12">
+                        <label for="staticPhone" class="col-form-label">{{data.imageURL}}</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mb-5">
+                <div class="col-sm-4">
+                    <label for="staticName" class="col-sm-12 col-form-label text-success">Time</label>
+                    <div class="col-sm-12">
+                        <label for="staticName" class="col-form-label">{{data.startTime}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="staticEmail" class="col-sm-12 col-form-label text-success">Tatto Location</label>
+                    <div class="col-sm-12">
+                        <label for="staticEmail" class="col-form-label">{{data.tattooLocation}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="staticPhone" class="col-sm-12 col-form-label text-success">Images</label>
+                    <div class="col-sm-12">
+                        <label for="staticPhone" class="col-form-label">{{data.imageURL}}</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions style="text-align: right;color: white;">
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+</div>

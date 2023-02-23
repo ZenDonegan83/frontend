@@ -7,6 +7,7 @@ import { environment } from "environments/environment";
 import { ToastrService } from "ngx-toastr";
 import { ResponseDto } from "./../models/responseDto";
 import { commonUtil } from "app/core/utils/commonUtil";
+import { Router } from "@angular/router";
 const API_URL = `${environment.baseURL}`;
 @Injectable({
   providedIn: "root",
@@ -19,10 +20,18 @@ export class ApiService {
       Accept: "*/*",
     }),
   };
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private route: Router
+  ) {}
 
   private formatErrors(error: any) {
     debugger;
+    if (error && (error.status == 403 || error.status == 401)) {
+      commonUtil.setLoggedOutInSession();
+      this.route.navigate(["/login"]);
+    }
     if (error.error) {
       let result: ResponseDto = error.error;
       if (result.status == "FAILED") {
@@ -109,20 +118,30 @@ export class ApiService {
       .pipe(catchError((err) => this.formatErrors(err)));
   }
 
-  public uploadFile<T>(url, body, headers: any = null): Observable<T> {
+  public uploadFile<T>(
+    url,
+    body: FormData,
+    headers: any = null
+  ): Observable<T> {
     if (headers === null) {
       headers = new HttpHeaders();
     }
     return this.http
-      .post<T>(
-        API_URL + url,
-        body
-        // {
-        //   reportProgress: true,
-        //   responseType: "json",
-        // }
-      )
+      .post<T>(API_URL + url, body, {
+        reportProgress: true,
+        responseType: "json",
+      })
       .pipe(catchError((err) => this.formatErrors(err)));
+  }
+
+  public getFile(url, params?: unknown): Observable<any> {
+    let headers = new HttpHeaders();
+    const queryParams = this.prepareParams(params);
+    return this.http.get(API_URL + url + queryParams, {
+      headers,
+      responseType: "blob",
+      // responseType: "blob",
+    });
   }
 
   // http://localhost:8080/api/storage/uploadImage

@@ -20,50 +20,7 @@ export class ArtistComponent implements OnInit {
   currentPage = 1;
   public term: any;
 
-  public data: any[] = [
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-  ];
+  public data: any[] = [];
   selectedLanguage: any = "en";
   translation: any = [];
   actions: any = [];
@@ -125,8 +82,8 @@ export class ArtistComponent implements OnInit {
   }
   viewModal(item: UserSessionDto) {
     if (item && item.artistID > 0) {
-      const dialogRef = this.dialog.open(ViewArtistComponent, {
-        width: "100rem",
+      const dialogRef = this.dialog.open(ArtistSessionHistoryComponent, {
+        width: "100%",
         data: item,
       });
 
