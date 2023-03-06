@@ -52,14 +52,13 @@ export class AddArtistComponent implements OnInit {
         email: this.data.email,
         username: this.data.username,
         password: this.data.password,
+        profilePicURL: this.data.profilePicURL,
       });
 
-      debugger;
       if (this.data.profilePicURL) {
         this._commonService
           .getFile(this.data.profilePicURL)
           .subscribe((data: any) => {
-            debugger;
             const reader = new FileReader();
             reader.onload = (e) => (this.profilePic = e.target.result);
             reader.readAsDataURL(new Blob([data]));
@@ -85,11 +84,10 @@ export class AddArtistComponent implements OnInit {
   }
 
   addArtist(artistForm: FormGroup) {
-    debugger;
     this.submitted = true;
     if (!artistForm.invalid) {
       this.submitted = false;
-      debugger;
+
       let request: any = artistForm.value;
       // if (this.file) {
       //   request = new FormData();
@@ -132,12 +130,11 @@ export class AddArtistComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageSrc = reader.result as string;
-        debugger;
+
         if (this.file) {
           var request = new FormData();
           request.append("file", this.file);
           this._commonService.uploadFile(request).subscribe((result) => {
-            debugger;
             if (result) {
               if (result.status == "SUCCESS") {
                 this.profilePic = null;

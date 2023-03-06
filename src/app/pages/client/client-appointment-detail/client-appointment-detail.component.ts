@@ -9,14 +9,15 @@ import { UserSessionDto } from "app/core/models/userSessionDto";
 import { ToastrService } from "ngx-toastr";
 import { ArtistService } from "app/core/services/artist.service";
 import { CommonService } from "app/core/services/common.service";
+import { ClientService } from "./../../../core/services/client.service";
 import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
-  selector: "app-appointment-detail",
-  templateUrl: "./appointment-detail.component.html",
-  styleUrls: ["./appointment-detail.component.scss"],
+  selector: "app-client-appointment-detail",
+  templateUrl: "./client-appointment-detail.component.html",
+  styleUrls: ["./client-appointment-detail.component.scss"],
 })
-export class AppointmentDetailComponent implements OnInit {
+export class ClientAppointmentDetailComponent implements OnInit {
   event: EventDTO = null;
   selectedLanguage: any = "en";
   translation: any;
@@ -29,7 +30,7 @@ export class AppointmentDetailComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: EventDTO,
     private translationService: TranslationService,
-    private _service: ArtistService,
+    private _service: ClientService,
     private _eventService: EventService,
     private toastr: ToastrService,
     public dialog: MatDialog,

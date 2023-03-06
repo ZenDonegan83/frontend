@@ -264,9 +264,7 @@ export class DashboardComponent implements OnInit {
   public depList: any[] = [];
 
   ngOnInit() {
-    debugger;
     this._service.getAll().subscribe((res) => {
-      debugger;
       this.depList = res;
     });
   }

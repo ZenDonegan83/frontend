@@ -27,7 +27,6 @@ export class ApiService {
   ) {}
 
   private formatErrors(error: any) {
-    debugger;
     if (error && (error.status == 403 || error.status == 401)) {
       commonUtil.setLoggedOutInSession();
       this.route.navigate(["/login"]);
@@ -70,7 +69,7 @@ export class ApiService {
   //   if (options === null) {
   //     options = this.httpOptions;
   //   }
-  //   debugger;
+  //
   //   return this.http
   //     .post<T>(API_URL + `${path}`, JSON.stringify(body), options)
   //     .pipe(catchError(err=>this.formatErrors(err,this.toastr)));

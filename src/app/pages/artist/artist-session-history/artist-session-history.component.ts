@@ -10,6 +10,7 @@ import { ToastrService } from "ngx-toastr";
 import { ArtistService } from "app/core/services/artist.service";
 import { AppointmentDetailComponent } from "./../appointment-detail/appointment-detail.component";
 import { CommonService } from "app/core/services/common.service";
+import { commonUtil } from "app/core/utils/commonUtil";
 
 @Component({
   selector: "app-artist-session-history",
@@ -17,10 +18,10 @@ import { CommonService } from "app/core/services/common.service";
   styleUrls: ["./artist-session-history.component.scss"],
 })
 export class ArtistSessionHistoryComponent implements OnInit {
-  q: any;
-  itemsPerPage = 5;
-  currentPage = 1;
-  term: any;
+  qSH: any;
+  itemsPerPageSH = 5;
+  currentPageSH = 1;
+  termSH: any;
 
   // data = [
   //   {
@@ -135,8 +136,7 @@ export class ArtistSessionHistoryComponent implements OnInit {
   // );
   ngOnInit(): void {
     //let date = this.datePipe.transform(this.selectedAppDate, 'yyyy-MM-dd');
-    //debugger;
-    debugger;
+    //
 
     if (this.data && !this.data.artistID) {
       this.closeModal();
@@ -146,7 +146,6 @@ export class ArtistSessionHistoryComponent implements OnInit {
       this._commonService
         .getFile(this.data.profilePicURL)
         .subscribe((data: any) => {
-          debugger;
           const reader = new FileReader();
           reader.onload = (e) => (this.profilePic = e.target.result);
           reader.readAsDataURL(new Blob([data]));
@@ -170,53 +169,22 @@ export class ArtistSessionHistoryComponent implements OnInit {
   }
 
   toSeconds(time_str) {
-    // Extract hours, minutes and seconds
-    var parts = time_str.split(":");
-    // compute  and return total seconds
-    return (
-      parts[0] * 3600 + // an hour has 3600 seconds
-      parts[1] * 60 // a minute has 60 seconds
-    );
+    return commonUtil.toSeconds(time_str);
   }
 
   GetTimeDuration(startTime: string, endTime: string) {
-    debugger;
-    let sSec = this.toSeconds(startTime);
-    let eSec = this.toSeconds(endTime);
-    var difference = Math.abs(sSec - eSec);
-    // format time differnece
-    var result = [
-      Math.floor(difference / 3600), // an hour has 3600 seconds
-      Math.floor((difference % 3600) / 60), // a minute has 60 seconds
-    ];
-    // 0 padding and concatation
-    var resultStr = result
-      .map(function (v) {
-        return v < 10 ? "0" + v : v;
-      })
-      .join(":");
-
-    return resultStr;
+    return commonUtil.GetTimeDuration(startTime, endTime);
   }
 
   timeConvert(time) {
-    // Check correct time format and split into components
-    time = time
-      .toString()
-      .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-    if (time.length > 1) {
-      // If time format correct
-      time = time.slice(1); // Remove full string match value
-      time[5] = +time[0] < 12 ? "AM" : "PM"; // Set AM/PM
-      time[0] = +time[0] % 12 || 12; // Adjust hours
-    }
-    return time.join(""); // return adjusted time or original string
+    return commonUtil.timeConvert(time);
   }
 
   getList() {
+    debugger;
     this._eventService.getAll().subscribe((result) => {
       if (result.status == "SUCCESS") {
+        debugger;
         this.events = result.result;
         this.filterEvents = this.events.filter(
           (s) => s.artistID == this.data.artistID

@@ -13,10 +13,8 @@ export function uniqueEmailValidator(
   return (
     control: AbstractControl
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-    debugger;
     return _service.checkIfEmailExists(control.value).pipe(
       map((res) => {
-        debugger;
         if (res.emailExists) {
           return { uniqueEmail: true };
         }

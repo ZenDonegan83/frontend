@@ -20,4 +20,5 @@ export class EventDTO {
   noShow: string;
   reschedule: string;
   eventCustomerPDFDTO: EventCustomerPDFDTO;
+  eventImageList: any[] = [];
 }

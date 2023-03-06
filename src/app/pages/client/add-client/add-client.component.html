@@ -8,14 +8,15 @@
                     <div class="img-styl">
 
                         <div class="form-group" *ngIf="isSelected">
-                            <label class="upload-labal" for="file"><img class="img-profile"
-                                    src="assets/img/client-profile.png" alt=""></label>
-                            <input id="file" name="photo" type="file" class="form-control uploadFile"
-                                (change)="onFileChange($event)" accept="image/*">
+                            <label class="upload-labal" for="file">
+                                <img class="img-profile" style="width: 93px; height: 93px;border-radius: 45%;"
+                                    src="assets/img/Logo.png" alt=""></label>
+                            <!-- <input id="file" name="photo" type="file" class="form-control uploadFile"
+                                (change)="onFileChange($event)" accept="image/*"> -->
                         </div>
-                        <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos">
+                        <!-- <img [src]="imageSrc" *ngIf="imageSrc" class="img-pos"> -->
                     </div>
-                    <img class="edit-profile" src="assets/img/edit-profile.png" alt="">
+                    <!-- <img class="edit-profile" src="assets/img/edit-profile.png" alt=""> -->
                 </div>
                 <div class="col-md-6">
                     <!-- <img   src="assets/img/client-profile.png" alt=""> -->
@@ -42,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row  form-margin">
             <div class="col-md-2">
                 <p class="client-text">{{translation?.lastName}}</p>
             </div>
@@ -59,10 +60,10 @@
                 <p class="client-text">{{translation?.phone}}</p>
             </div>
             <div class="col-md-10">
-                <input type="text" formControlName="tellNumber" class="form-control artist-input"
+                <input type="text" formControlName="telNumber" class="form-control artist-input"
                     placeholder="000-000-000">
-                <div *ngIf="clientForm.get('tellNumber').invalid && submitted">
-                    <span class="text-danger" *ngIf="clientForm.get('tellNumber').errors.required">Telephone is
+                <div *ngIf="clientForm.get('telNumber').invalid && submitted">
+                    <span class="text-danger" *ngIf="clientForm.get('telNumber').errors.required">Telephone is
                         required</span>
                 </div>
             </div>
