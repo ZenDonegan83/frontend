@@ -1,0 +1,18 @@
+<div (mouseenter)="onImageHover()"
+     (mouseleave)="onImageLeave()"
+     [ngStyle]="getSectionStyles()"
+     class="upload-btn-section">
+    <img [class.image-blur]="showImageUpload"
+         [ngStyle]="getImageStyles()"
+         [src]="imageSrc"
+         class="profile-image-single">
+    <div (click)="openImageUpload()"
+         *ngIf="showImageUpload"
+         [ngStyle]="getUploadImageTextStyles()"
+         class="upload-image-text">
+        <p>
+            <mat-icon>camera_alt</mat-icon>
+            Upload Image
+        </p>
+    </div>
+</div>

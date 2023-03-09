@@ -90,7 +90,7 @@ export class ClientComponent implements OnInit {
           this.toastr.error(s.errorMessage);
         });
       } else {
-        this.toastr.error("Someting went wrong during register user");
+        this.toastr.error("Something went wrong during register user");
       }
     });
   }

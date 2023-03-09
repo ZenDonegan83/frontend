@@ -1,0 +1,60 @@
+.dialog-content-wrapper {
+  mat-icon {
+    color: #FFFFFF;
+  }
+}
+
+.content {
+  margin: 5px 5px 10px;
+
+  input {
+    padding-top: 7px;
+  }
+}
+
+.cropped-image {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.consent-form-image-upload-header {
+  width: 550px;
+  height: 62px;
+  background: #78EF30 0% 0% no-repeat padding-box;
+  position: relative;
+  bottom: 24px;
+  right: 24px;
+}
+
+.close-btn {
+  position: relative;
+  top: 16px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  width: 23px;
+  float: right;
+}
+
+.consent-form-image-save-btn{
+  background: #78EF30 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 30px #78ef30;
+  border-radius: 20px;
+  opacity: 1;
+  width: 126px;
+  height: 40px;
+  border: none;
+  font: normal normal bold 14px/24px Nunito Sans;
+  letter-spacing: 0.14px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.image-div {
+  width: 500px;
+  height: 500px;
+  overflow: auto;
+}

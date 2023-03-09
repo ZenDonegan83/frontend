@@ -159,6 +159,20 @@
     "password": "Password",
     "btn_submit": "Submit"
   },
+  "add_edit_consent_form": {
+    "title_input": "Title",
+    "content": "Content",
+    "itemOne": "SLorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "itemTwo": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC",
+    "itemThree": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.",
+    "itemFour": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
+    "itemFive": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "user_name": "Username",
+    "number" : "Number",
+    "email": "Email",
+    "password": "Password",
+    "btn_save": "Save"
+  },
   "templates": {
     "btn_actions": [
       "Edit",

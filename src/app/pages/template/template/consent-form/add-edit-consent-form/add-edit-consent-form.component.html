@@ -1,0 +1,147 @@
+<div class="row consent-form-head">
+    <div class="col-md-12 bg-clients">
+        <div class="table-box">
+            <div class="row">
+                <div class="col-md-12 clients-list">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="table-heading">Add/Edit Consent form</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-l-r-15" style="margin-top: 50px; margin-left: 30px">
+                    <app-consent-form-image-cropper-component (onImageCropped)="onImageCropped($event)"
+                                                              [aspectRatio]="1"
+                                                              [maintainAspectRatio]="true"
+                                                              [imageUrl]="getImageUrl()"
+                                                              [resizeToWidth]="200"
+                                                              [viewPortMaxHeight]="'200px'"
+                                                              [viewPortMaxWidth]="'200px'"
+                                                              class="p-bottom-0 p-top-12 p-left-12">
+                    </app-consent-form-image-cropper-component>
+                </div>
+
+<!--                Fixme : Need to fix image uploading-->
+<!--                <div class="row m-l-r-15">-->
+<!--                <input-->
+<!--                        (change)="selectFile($event)"-->
+<!--                        aria-describedby="inputGroupFileAddon01"-->
+<!--                        class="custom-file-input"-->
+<!--                        id="inputGroupFile01"-->
+<!--                        type="file">-->
+<!--                </div>-->
+
+                <div class="row m-l-r-15">
+                    <form [formGroup]="addEditConsentForm" autocomplete="off" class="kt-form" id="consent-form">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <input type="text"
+                                       formControlName="title"
+                                       maxlength="128"
+                                       class="form-control consent-form-input"
+                                       placeholder="{{translation?.title_input}}"
+                                       autocomplete=" new-password">
+                                <div *ngIf="isControlHasError('title','required')">
+                                    <span class="text-danger" *ngIf="isControlHasError('title','required')">
+                                        Title is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <textarea type="text"
+                                          formControlName="content"
+                                          class="form-control consent-form-input"
+                                          rows="8"
+                                          maxlength="1024"
+                                          placeholder="{{translation?.content}}"
+                                          autocomplete=" new-password">
+                                </textarea>
+                                <div *ngIf="isControlHasError('content','required')">
+                                    <span class="text-danger" *ngIf="isControlHasError('content','required')">
+                                        Content is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <mat-checkbox
+                                        class="form-control consent-form-input"
+                                        color="primary"
+                                        (change)="changeCheckbox($event,'ITEM_ONE')"
+                                        [checked]="isItemOneChecked == 'Y'">
+                                    {{translation?.itemOne}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <mat-checkbox
+                                        class="form-control consent-form-input"
+                                        color="primary"
+                                        (change)="changeCheckbox($event,'ITEM_TWO')"
+                                        [checked]="isItemTwoChecked == 'Y'">
+                                    {{translation?.itemTwo}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <mat-checkbox
+                                        class="form-control consent-form-input"
+                                        color="primary"
+                                        (change)="changeCheckbox($event,'ITEM_THREE')"
+                                        [checked]="isItemThreeChecked == 'Y'">
+                                    {{translation?.itemThree}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <mat-checkbox
+                                        class="form-control consent-form-input"
+                                        color="primary"
+                                        (change)="changeCheckbox($event,'ITEM_FOUR')"
+                                        [checked]="isItemFourChecked == 'Y'">
+                                    {{translation?.itemFour}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 20px">
+                                <mat-checkbox
+                                        class="form-control consent-form-input"
+                                        color="primary"
+                                        (change)="changeCheckbox($event,'ITEM_FIVE')"
+                                        [checked]="isItemFiveChecked == 'Y'">
+                                    {{translation?.itemFive}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="row m-l-r-15" style="margin-top: 20px">
+                    <div class="col-md-12" style="text-align: end">
+                        <button class="btn btn-default consent-form-save-btn"
+                                [disabled]="!isFormValid()"
+                                (click)="onSave($event)"
+                        >
+                            {{translation?.btn_save}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.upload-btn-section {
+  margin: 0px 10px 20px 0;
+  //width: 200px;
+  //max-height: 200px;
+
+  .image-blur {
+    webkit-filter: blur(3px); /* Chrome, Safari, Opera */
+    filter: blur(3px);
+  }
+
+  .upload-image-text {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    //max-width: 200px;
+    text-align: center;
+    top: -35px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    cursor: pointer;
+
+    p {
+      padding: 0;
+      margin: 0;
+      color: #ffffff;
+
+      mat-icon {
+        color: #ffffff;
+        position: relative;
+        top: 7px;
+        left: -4px;
+      }
+    }
+
+    mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  .profile-image-single {
+    //max-width: 200px;
+    //max-height: 200px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 5px;
+  }
+}

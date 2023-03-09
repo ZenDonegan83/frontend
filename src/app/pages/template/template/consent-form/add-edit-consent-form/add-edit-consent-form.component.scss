@@ -1,0 +1,49 @@
+.consent-form-head {
+  background-color: #000;
+  min-height: calc(100% - 123px);
+}
+
+.row {
+  margin: 0;
+}
+
+.bg-clients {
+  padding: 56.5px 30px;
+}
+
+.clients-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile {
+  width: 14px;
+}
+
+.m-l-r-15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.consent-form-input{
+  box-shadow: 0px 3px 12px #706E6E29;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  opacity: 1;
+  background: #302E2E 0% 0% no-repeat padding-box;
+  color: #FFFFFF;
+}
+
+.consent-form-save-btn{
+  background: #78EF30 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 30px #78ef30;
+  border-radius: 20px;
+  opacity: 1;
+  width: 126px;
+  height: 40px;
+  border: none;
+  font: normal normal bold 14px/24px Nunito Sans;
+  letter-spacing: 0.14px;
+  color: #000000;
+  text-transform: uppercase;
+}
