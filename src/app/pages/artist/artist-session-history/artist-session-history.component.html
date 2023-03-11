@@ -1,56 +1,65 @@
-<div class="row artists-head">
-    <div class="col-md-12 bg-clients">
-        <div class="table-box">
+<h1 mat-dialog-title>Artist Detail</h1>
+<div mat-dialog-content>
+    <div class="row artists-head">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-3" style="text-align: center;">
+                    <img [src]="profilePic || 'assets/img/Logo.png'"
+                        style="width: 93px; height: 93px; border-radius: 45%;" />
+                </div>
+                <div class="col-sm-3">
+                    <label for="staticName" class="col-sm-12 col-form-label text-success">Name:</label>
+                    <div class="col-sm-12">
+                        <label for="staticName" class="col-form-label">{{data.firstName}} {{data.lastName}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="staticEmail" class="col-sm-12 col-form-label text-success">Email:</label>
+                    <div class="col-sm-12">
+                        <label for="staticEmail" class="col-form-label">{{data.email}}</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="staticPhone" class="col-sm-12 col-form-label text-success">User Name:</label>
+                    <div class="col-sm-12">
+                        <label for="staticPhone" class="col-form-label">{{data.username}}</label>
+                    </div>
+                </div>
+
+            </div>
+            <hr />
             <div class="row">
                 <div class="col-md-12 clients-list">
-
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- <p class="table-heading">{{selectedAppDate}}({{translation?.title}})</p> -->
+                            <p class="table-heading">Client History</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 listing-table">
-                    <table id="artist-table">
+                <div class="col-md-12">
+                    <table id="table" class="table table-dark" style="color: white !important;">
                         <thead>
                             <tr>
-                                <th></th>
-                                <!-- <th>{{translation?.grid_columns[0]}}<img class="up-down"
-                                        src="../../../../assets/img/up-dwn.png" alt="">
-                                </th>
-                                <th>{{translation?.grid_columns[1]}} <img class="up-down"
-                                        src="../../../../assets/img/up-dwn.png" alt=""></th>
-                                <th>{{translation?.grid_columns[2]}} <img class="up-down"
-                                        src="../../../../assets/img/up-dwn.png" alt=""></th>
-                                <th>{{translation?.grid_columns[3]}}<img class="up-down"
-                                        src="../../../../assets/img/up-dwn.png" alt="">
-                                </th>
-                                <th>{{translation?.grid_columns[4]}}<img class="up-down"
-                                        src="../../../../assets/img/up-dwn.png" alt="">
-                                </th>
-                                <th>{{translation?.grid_columns[5]}}</th> -->
-                                <th>artist</th>
-                                <th>customer</th>
-                                <th>phone</th>
-                                <th>date</th>
-                                <th>time</th>
+                                <th>Appointment Date</th>
+                                <th>Time</th>
+                                <th>Time Duration</th>
+                                <th>Appointment Fees</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of filterEvents|paginate: { itemsPerPage: 5,currentPage: q }">
-                                <td><span><img class="profile" src="../../../../assets/img/Profile.png" alt=""></span>
-                                </td>
-                                <td><span>{{item.artist}}</span></td>
-                                <td><span>{{item.customer}} </span></td>
-                                <td><span> {{item.phone}}</span></td>
-                                <td><span class="cell-no">{{item.date}} </span></td>
-                                <td><span class="cell-no">{{item.time}} </span></td>
+                            <tr *ngFor="let item of filterEvents|paginate: { itemsPerPage: 5,currentPage: qSH }">
+                                <td>{{item.startDateStr}}</td>
+                                <td>{{timeConvert(item.startTime)}} to
+                                    {{timeConvert(item.endTime)}} </td>
+                                <td> {{GetTimeDuration(item.startTime,item.endTime)}} Hours</td>
+                                <td><span class="cell-no">${{item.cost}} </span></td>
                                 <td><span class="dropdown">
-                                        <a routerLink="/appointment-detail" class="dropdown-toggle"
-                                            data-toggle="dropdown">
+                                        <a (click)="viewModal(item)" class="dropdown-toggle" data-toggle="dropdown">
                                             <img class="eye-icon" src="../../../../assets/img/eye.png" alt="">
                                         </a>
                                     </span>
@@ -58,9 +67,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <pagination-controls class="pagination-pos" (pageChange)="q = $event"></pagination-controls>
+                    <pagination-controls class="pagination-pos" (pageChange)="qSH = $event"></pagination-controls>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div mat-dialog-actions style="text-align: right;color: white;">
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
 </div>

@@ -16,7 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let headers: any = {
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
       Accept: "*/*",
     };
 

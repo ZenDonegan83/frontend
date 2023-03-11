@@ -60,7 +60,6 @@ export class ViewArtistComponent implements OnInit {
   getList() {
     this._eventService.getAll().subscribe((result) => {
       if (result.status == "SUCCESS") {
-        debugger;
         this.events = result.result;
         this.filterEvents = this.events.filter(
           (s) => s.artistID == this.data.artistID

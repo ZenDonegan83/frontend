@@ -5,6 +5,7 @@ import { commonUtil } from "app/core/utils/commonUtil";
 import { ToastrService } from "ngx-toastr";
 import { TranslationService } from "../../../core/services/transalation.service";
 import { ClientService } from "./../../../core/services/client.service";
+import { CustomerDTO } from "./../../../core/models/customerDto";
 
 @Component({
   selector: "app-add-client",
@@ -22,7 +23,7 @@ export class AddClientComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: CustomerDTO,
     private translationService: TranslationService,
     private _service: ClientService,
     private toastr: ToastrService
@@ -32,16 +33,16 @@ export class AddClientComponent implements OnInit {
     this.clientForm = this.fb.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
-      tellNumber: ["", Validators.required],
+      telNumber: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
     });
 
-    if (this.data && this.data.artistID > 0) {
+    if (this.data && this.data.customerID > 0) {
       this.clientForm.patchValue({
         firstName: this.data.firstName,
         lastName: this.data.lastName,
         email: this.data.email,
-        tellNumber: this.data.tellNumber,
+        telNumber: this.data.telNumber,
       });
     }
 
@@ -54,7 +55,6 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient(clientForm: FormGroup) {
-    debugger;
     this.submitted = true;
     debugger;
     if (!clientForm.invalid) {
@@ -67,13 +67,11 @@ export class AddClientComponent implements OnInit {
         request = commonUtil.convertModelToFormData(clientForm.value, request);
       }
 
-      if (this.data && this.data.artistID > 0) {
-        request.artistID = this.data.artistID;
+      if (this.data && this.data.customerID > 0) {
+        request.customerID = this.data.customerID;
       }
 
-      debugger;
       this._service.CreateOrUpdate(request).subscribe((result) => {
-        debugger;
         if (result) {
           if (result.status == "SUCCESS") {
             this.toastr.success("Client created successfully!");

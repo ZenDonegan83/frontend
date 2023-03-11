@@ -6,7 +6,7 @@ export class UserSessionDto {
   email: string;
   password: string;
   role: string;
-  profilePic: string;
+  profilePicURL: string;
   createDate: Date;
   accessToken: string;
   refreshToken: string;
