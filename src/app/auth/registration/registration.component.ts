@@ -86,7 +86,6 @@ export class RegistrationComponent implements OnInit {
     if (!registerForm.invalid) {
       this.submitted = false;
       this._service.Register(this.model).subscribe((result) => {
-        debugger;
         if (result) {
           if (result.status == "SUCCESS") {
             this.toastr.success("Register Successfully!");

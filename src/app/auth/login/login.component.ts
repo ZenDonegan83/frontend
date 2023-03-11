@@ -48,9 +48,8 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (!loginForm.invalid) {
       this.submitted = false;
-      debugger;
+
       this._service.SignIn(this.model).subscribe((result) => {
-        debugger;
         if (result && result.status == "SUCCESS") {
           commonUtil.setLoggedInSession(result.result);
           localStorage.setItem("token", loginForm.value.username);

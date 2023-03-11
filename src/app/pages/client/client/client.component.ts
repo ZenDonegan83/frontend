@@ -5,6 +5,8 @@ import { TranslationService } from "../../../core/services/transalation.service"
 import { DeleteComponent } from "../../../modal-popups/delete/delete.component";
 import { AddClientComponent } from "../add-client/add-client.component";
 import { ClientService } from "./../../../core/services/client.service";
+import { ClientSessionHistoryComponent } from "./../client-session-history/client-session-history.component";
+import { CustomerDTO } from "./../../../core/models/customerDto";
 
 @Component({
   selector: "app-client",
@@ -16,50 +18,52 @@ export class ClientComponent implements OnInit {
   itemsPerPage = 5;
   currentPage = 1;
   term: any;
-  data = [
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-  ];
+  // data = [
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  //   {
+  //     firstName: "Liza",
+  //     lastName: "King",
+  //     email: "lizaking@gmail.com",
+  //     contactNumber: "123-456-7890",
+  //     action: "M",
+  //   },
+  // ];
+
+  dataList: CustomerDTO[] = [];
   selectedLanguage: any = "en";
   translation: any;
   actions: any = [];
@@ -82,9 +86,8 @@ export class ClientComponent implements OnInit {
 
   getList() {
     this._service.getAll().subscribe((result) => {
-      debugger;
       if (result.status == "SUCCESS") {
-        this.data = result.result;
+        this.dataList = result.result;
       } else if (result.status == "FAILED") {
         result.appsErrorMessages.forEach((s) => {
           this.toastr.error(s.errorMessage);
@@ -99,35 +102,45 @@ export class ClientComponent implements OnInit {
       width: "80rem",
     });
     dialogRef.afterClosed().subscribe((result) => {
-      debugger;
       this.getList();
       console.log(`Dialog result: ${result}`); // Pizza!
     });
   }
-  editModal(item: any) {
+  // editModal(item: any) {
+  //   const dialogRef = this.dialog.open(AddClientComponent, {
+  //     width: "80rem",
+  //     data: item,
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     this.getList();
+  //     console.log(`Dialog result: ${result}`); // Pizza!
+  //   });
+  // }
+  // ViewModal(item: any) {
+  //   const dialogRef = this.dialog.open(AddClientComponent, {
+  //     width: "80rem",
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(`Dialog result: ${result}`); // Pizza!
+  //   });
+  // }
+  // deleteModel(item: any) {
+  //   const dialogRef = this.dialog.open(DeleteComponent, {
+  //     width: "80rem",
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     this.getList();
+  //     console.log(`Dialog result: ${result}`); // Pizza!
+  //   });
+  // }
+
+  editModal(item: CustomerDTO) {
     const dialogRef = this.dialog.open(AddClientComponent, {
       width: "80rem",
-      data: item,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      debugger;
-      this.getList();
-      console.log(`Dialog result: ${result}`); // Pizza!
-    });
-  }
-  ViewModal(item: any) {
-    const dialogRef = this.dialog.open(AddClientComponent, {
-      width: "80rem",
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
-    });
-  }
-  deleteModel(item: any) {
-    const dialogRef = this.dialog.open(DeleteComponent, {
-      width: "80rem",
+      data: { ...item },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -135,4 +148,28 @@ export class ClientComponent implements OnInit {
       console.log(`Dialog result: ${result}`); // Pizza!
     });
   }
+  viewModal(item: CustomerDTO) {
+    debugger;
+    if (item && item.customerID > 0) {
+      const dialogRef = this.dialog.open(ClientSessionHistoryComponent, {
+        width: "100%",
+        data: { ...item },
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`); // Pizza!
+      });
+    }
+  }
+
+  // deleteModel(item: UserSessionDto) {
+  //   const dialogRef = this.dialog.open(DeleteComponent, {
+  //     width: "80rem",
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     this.getList();
+  //     console.log(`Dialog result: ${result}`); // Pizza!
+  //   });
+  // }
 }

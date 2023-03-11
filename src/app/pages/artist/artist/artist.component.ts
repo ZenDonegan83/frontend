@@ -15,55 +15,12 @@ import { ArtistSessionHistoryComponent } from "./../artist-session-history/artis
   styleUrls: ["./artist.component.scss"],
 })
 export class ArtistComponent implements OnInit {
-  q: any;
-  itemsPerPage = 5;
-  currentPage = 1;
-  public term: any;
+  qSH: any;
+  itemsPerPageSH = 5;
+  currentPageSH = 1;
+  public termSH: any;
 
-  public data: any[] = [
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-    {
-      firstName: "Liza",
-      lastName: "King",
-      email: "lizaking@gmail.com",
-      contactNumber: "123-456-7890",
-      action: "M",
-    },
-  ];
+  public dataList: any[] = [];
   selectedLanguage: any = "en";
   translation: any = [];
   actions: any = [];
@@ -90,7 +47,7 @@ export class ArtistComponent implements OnInit {
   getList() {
     this._service.getAll().subscribe((result) => {
       if (result.status == "SUCCESS") {
-        this.data = result.result;
+        this.dataList = result.result;
       } else if (result.status == "FAILED") {
         result.appsErrorMessages.forEach((s) => {
           this.toastr.error(s.errorMessage);
@@ -113,9 +70,10 @@ export class ArtistComponent implements OnInit {
     if (item && item.password) {
       item.password = "***";
     }
+
     const dialogRef = this.dialog.open(AddArtistComponent, {
       width: "80rem",
-      data: item,
+      data: { ...item },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -125,9 +83,9 @@ export class ArtistComponent implements OnInit {
   }
   viewModal(item: UserSessionDto) {
     if (item && item.artistID > 0) {
-      const dialogRef = this.dialog.open(ViewArtistComponent, {
-        width: "100rem",
-        data: item,
+      const dialogRef = this.dialog.open(ArtistSessionHistoryComponent, {
+        width: "100%",
+        data: { ...item },
       });
 
       dialogRef.afterClosed().subscribe((result) => {

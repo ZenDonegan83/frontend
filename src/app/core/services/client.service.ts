@@ -4,6 +4,7 @@ import { ApiService } from "./api.service";
 import { RegisterDto } from "../models/registerDto";
 import { LoginDto } from "../models/loginDto";
 import { ResponseDto } from "../models/responseDto";
+import { CustomerDTO } from "./../models/customerDto";
 
 @Injectable({
   providedIn: "root",
@@ -12,15 +13,15 @@ export class ClientService {
   baseUrl: string = "/customer/";
   constructor(private api: ApiService) {}
 
-  public CreateOrUpdate(entity: any): Observable<ResponseDto> {
-    if (isNaN(entity.artistID) || entity.artistID == 0)
+  public CreateOrUpdate(entity: CustomerDTO): Observable<ResponseDto> {
+    if (isNaN(entity.customerID) || entity.customerID == 0)
       return this.api.postWithFile<ResponseDto>(
         this.baseUrl + "saveCustomer",
         entity
       );
     else
       return this.api.putWithFile<ResponseDto>(
-        this.baseUrl + "updateCustomer/" + entity.artistID,
+        this.baseUrl + "updateCustomer/" + entity.customerID,
         entity
       );
   }

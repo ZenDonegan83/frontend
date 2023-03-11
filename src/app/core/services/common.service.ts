@@ -9,7 +9,10 @@ import { ApiService } from "./api.service";
 export class CommonService {
   constructor(private api: ApiService) {}
 
-  public uploadFile(file: any): Observable<ResponseDto> {
-    return this.api.post<ResponseDto>("/storage/uploadImage", file);
+  public uploadFile(file: any): Observable<any> {
+    return this.api.uploadFile<any>("/storage/uploadImage", file);
+  }
+  public getFile(file: any): Observable<any> {
+    return this.api.getFile("/storage/loadImage/" + file);
   }
 }

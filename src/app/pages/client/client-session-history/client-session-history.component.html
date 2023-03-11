@@ -1,56 +1,66 @@
-<div class="row artists-head">
-    <div class="col-md-12 bg-clients">
-        <div class="table-box">
+<h1 mat-dialog-title>Client Detail</h1>
+<div mat-dialog-content>
+    <div class="row artists-head">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12 clients-list">
+                <div class="col-md-12">
 
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="table-heading">{{selectedAppDate}}({{translation?.title}})</p>
+                            <!-- <p class="table-heading">{{selectedAppDate}}({{translation?.title}})</p> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 listing-table">
-                    <table id="artist-table">
+                <div class="col-md-12">
+                    <table id="artist-table" class="table table-dark" style="color: white !important;"
+                        *ngIf="translation && translation?.grid_columns">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>{{translation?.grid_columns[0]}}<img class="up-down" src="../../../../assets/img/up-dwn.png" alt="">
-                            </th>
-                            <th>{{translation?.grid_columns[1]}} <img class="up-down" src="../../../../assets/img/up-dwn.png"
-                                                                      alt=""></th>
-                            <th>{{translation?.grid_columns[2]}} <img class="up-down" src="../../../../assets/img/up-dwn.png"
-                                                                      alt=""></th>
-                            <th>{{translation?.grid_columns[3]}}<img class="up-down" src="../../../../assets/img/up-dwn.png" alt="">
-                            </th>
-                            <th>{{translation?.grid_columns[4]}}<img class="up-down" src="../../../../assets/img/up-dwn.png" alt="">
-                            </th>
-                            <th>{{translation?.grid_columns[5]}}</th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th>{{translation?.grid_columns[0]}}<img class="up-down"
+                                        src="../../../../assets/img/up-dwn.png" alt="">
+                                </th>
+                                <th>{{translation?.grid_columns[1]}} <img class="up-down"
+                                        src="../../../../assets/img/up-dwn.png" alt=""></th>
+                                <th>{{translation?.grid_columns[2]}} <img class="up-down"
+                                        src="../../../../assets/img/up-dwn.png" alt=""></th>
+                                <th>{{translation?.grid_columns[3]}}<img class="up-down"
+                                        src="../../../../assets/img/up-dwn.png" alt="">
+                                </th>
+                                <th>{{translation?.grid_columns[4]}}<img class="up-down"
+                                        src="../../../../assets/img/up-dwn.png" alt="">
+                                </th>
+                                <th>{{translation?.grid_columns[5]}}</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let item of data|paginate: { itemsPerPage: 5,currentPage: q }">
-                            <td><span><img class="profile" src="../../../../assets/img/Profile.png" alt=""></span></td>
-                            <td><span>{{item.artist}}</span></td>
-                            <td><span>{{item.customer}} </span></td>
-                            <td><span> {{item.phone}}</span></td>
-                            <td><span class="cell-no">{{item.date}} </span></td>
-                            <td><span class="cell-no">{{item.time}} </span></td>
-                            <td><span class="dropdown">
-                           <a routerLink="/appointment-detail" class="dropdown-toggle" data-toggle="dropdown">
-                             <img class="eye-icon" src="../../../../assets/img/eye.png" alt="">
-                       </a>
-                      </span>
-                            </td>
-                        </tr>
+                            <tr *ngFor="let item of filterEvents|paginate: { itemsPerPage: 5,currentPage: qSH }">
+                                <td><span><img class="profile" src="../../../../assets/img/Logo.png" alt=""></span>
+                                </td>
+                                <td><span>{{item.userDTO.firstName}} {{item.userDTO.lastName}}</span></td>
+                                <td><span>{{item.customerDTO.firstName}} {{item.customerDTO.lastName}} </span></td>
+                                <td><span> {{item.customerDTO.telNumber}}</span></td>
+                                <td><span class="cell-no">{{item.startDateStr}} </span></td>
+                                <td>{{timeConvert(item.startTime)}} to
+                                    {{timeConvert(item.endTime)}} </td>
+                                <td><span class="dropdown">
+                                        <a (click)="viewModal(item)" class="dropdown-toggle" data-toggle="dropdown">
+                                            <img class="eye-icon" src="../../../../assets/img/eye.png" alt="">
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                    <pagination-controls class="pagination-pos" (pageChange)="q = $event"></pagination-controls>
+                    <pagination-controls class="pagination-pos" (pageChange)="qSH = $event"></pagination-controls>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+</div>
+<div mat-dialog-actions style="text-align: right;color: white;">
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+</div>

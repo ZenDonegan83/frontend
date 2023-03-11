@@ -19,7 +19,6 @@ export class HTTPInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    debugger;
     const headers =
       (req.method === "POST" || req.method === "PUT") &&
       !req.headers.has("Content-Type") &&
