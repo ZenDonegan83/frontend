@@ -10,27 +10,17 @@
                     </div>
                 </div>
 
-                <div class="row m-l-r-15" style="margin-top: 50px; margin-left: 30px">
-                    <app-consent-form-image-cropper-component (onImageCropped)="onImageCropped($event)"
-                                                              [aspectRatio]="1"
-                                                              [maintainAspectRatio]="true"
-                                                              [imageUrl]="getImageUrl()"
-                                                              [resizeToWidth]="200"
-                                                              [viewPortMaxHeight]="'200px'"
-                                                              [viewPortMaxWidth]="'200px'"
-                                                              class="p-bottom-0 p-top-12 p-left-12">
-                    </app-consent-form-image-cropper-component>
-                </div>
-
-<!--                Fixme : Need to fix image uploading-->
-<!--                <div class="row m-l-r-15">-->
-<!--                <input-->
-<!--                        (change)="selectFile($event)"-->
-<!--                        aria-describedby="inputGroupFileAddon01"-->
-<!--                        class="custom-file-input"-->
-<!--                        id="inputGroupFile01"-->
-<!--                        type="file">-->
-<!--                </div>-->
+                <!--                <div class="row m-l-r-15" style="margin-top: 50px; margin-left: 30px">-->
+                <!--                    <app-consent-form-image-cropper-component (onImageCropped)="onImageCropped($event)"-->
+                <!--                                                              [aspectRatio]="1"-->
+                <!--                                                              [maintainAspectRatio]="true"-->
+                <!--                                                              [imageUrl]="getImageUrl()"-->
+                <!--                                                              [resizeToWidth]="200"-->
+                <!--                                                              [viewPortMaxHeight]="'200px'"-->
+                <!--                                                              [viewPortMaxWidth]="'200px'"-->
+                <!--                                                              class="p-bottom-0 p-top-12 p-left-12">-->
+                <!--                    </app-consent-form-image-cropper-component>-->
+                <!--                </div>-->
 
                 <div class="row m-l-r-15">
                     <form [formGroup]="addEditConsentForm" autocomplete="off" class="kt-form" id="consent-form">
@@ -56,7 +46,7 @@
                                           formControlName="content"
                                           class="form-control consent-form-input"
                                           rows="8"
-                                          maxlength="1024"
+                                          maxlength="512"
                                           placeholder="{{translation?.content}}"
                                           autocomplete=" new-password">
                                 </textarea>
@@ -69,64 +59,43 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12" style="margin-top: 20px">
-                                <mat-checkbox
-                                        class="form-control consent-form-input"
-                                        color="primary"
-                                        (change)="changeCheckbox($event,'ITEM_ONE')"
-                                        [checked]="isItemOneChecked == 'Y'">
-                                    {{translation?.itemOne}}
-                                </mat-checkbox>
+                            <div class="col-md-6" style="margin-top: 20px">
+                                <h3 style="color: white; font-weight: 500">
+                                    Additional Information
+                                </h3>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 20px; text-align: end">
+                                <button class="btn btn-default additional-info-btn"
+                                        style="margin-right: 10px"
+                                        (click)="onClickAdditionalInformationAdd($event)"
+                                >
+                                    Add
+                                </button>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12" style="margin-top: 20px">
-                                <mat-checkbox
-                                        class="form-control consent-form-input"
-                                        color="primary"
-                                        (change)="changeCheckbox($event,'ITEM_TWO')"
-                                        [checked]="isItemTwoChecked == 'Y'">
-                                    {{translation?.itemTwo}}
-                                </mat-checkbox>
-                            </div>
-                        </div>
+                        <ng-container *ngFor="let addInfo of additionalInformationArr">
 
-                        <div class="row">
-                            <div class="col-md-12" style="margin-top: 20px">
-                                <mat-checkbox
-                                        class="form-control consent-form-input"
-                                        color="primary"
-                                        (change)="changeCheckbox($event,'ITEM_THREE')"
-                                        [checked]="isItemThreeChecked == 'Y'">
-                                    {{translation?.itemThree}}
-                                </mat-checkbox>
+                            <div class="row">
+                                <div class="col-md-12" style="margin-top: 20px">
+                                    <div class="col-md-12 consent-form-input">
+                                        <div class="col-md-11">
+                                            <p style="color: white; padding: 8px; font-size: 14px">
+                                                {{addInfo.value}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-default additional-remove-btn"
+                                                    style="margin-right: 10px"
+                                                    (click)="onClickRemove($event, addInfo.currentIdx)"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12" style="margin-top: 20px">
-                                <mat-checkbox
-                                        class="form-control consent-form-input"
-                                        color="primary"
-                                        (change)="changeCheckbox($event,'ITEM_FOUR')"
-                                        [checked]="isItemFourChecked == 'Y'">
-                                    {{translation?.itemFour}}
-                                </mat-checkbox>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12" style="margin-top: 20px">
-                                <mat-checkbox
-                                        class="form-control consent-form-input"
-                                        color="primary"
-                                        (change)="changeCheckbox($event,'ITEM_FIVE')"
-                                        [checked]="isItemFiveChecked == 'Y'">
-                                    {{translation?.itemFive}}
-                                </mat-checkbox>
-                            </div>
-                        </div>
+                        </ng-container>
                     </form>
 
                 </div>
@@ -134,10 +103,17 @@
                 <div class="row m-l-r-15" style="margin-top: 20px">
                     <div class="col-md-12" style="text-align: end">
                         <button class="btn btn-default consent-form-save-btn"
+                                style="margin-right: 10px"
                                 [disabled]="!isFormValid()"
-                                (click)="onSave($event)"
+                                (click)="onPreviewPDF($event)"
                         >
-                            {{translation?.btn_save}}
+                            {{translation?.btn_preview}}
+                        </button>
+                        <button class="btn btn-default consent-form-save-btn"
+                                [disabled]="!isFormValid()"
+                                (click)="onUploadPDF($event)"
+                        >
+                            {{translation?.btn_upload}}
                         </button>
                     </div>
                 </div>

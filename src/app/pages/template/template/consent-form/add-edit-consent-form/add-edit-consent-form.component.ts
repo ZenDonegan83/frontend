@@ -2,8 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TranslationService} from "../../../../../core/services/transalation.service";
 import {MatCheckboxChange} from "@angular/material/checkbox";
-import {from} from "rxjs";
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {StorageService} from "../../../../../core/services/storage.service";
+import {AddAdditionalInfoComponent} from "./add-additional-info/add-additional-info.component";
+import {MatDialog} from "@angular/material/dialog";
+import {CommonService} from "../../../../../core/services/common.service";
+import {ToastrService} from "ngx-toastr";
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-add-edit-consent-form',
@@ -19,18 +26,23 @@ export class AddEditConsentFormComponent implements OnInit {
     translation: any;
     selectedLanguage: any = "en";
     isItemOneChecked: string = 'N';
-    isItemTwoChecked: string = 'N';
-    isItemThreeChecked: string = 'N';
-    isItemFourChecked: string = 'N'
-    isItemFiveChecked: string = 'N'
+
+    imageSrc: any = './assets/img/default-image.jpg'
+    pdfFooter: any = 'Powered by INKDSTRY';
+
+    additionalInformationArr: any = [];
+    idxCount: any = 1;
 
     constructor(private formBuilder: FormBuilder,
                 private translationService: TranslationService,
+                public dialog: MatDialog,
+                private _commonService: CommonService,
+                private toastr: ToastrService,
                 private storageService: StorageService) {
     }
 
     ngOnInit(): void {
-        this.initUserForm();
+        this.initForm();
 
         this.translationService.language.subscribe((res: any) => {
             this.selectedLanguage = res;
@@ -40,7 +52,7 @@ export class AddEditConsentFormComponent implements OnInit {
         });
     }
 
-    initUserForm() {
+    initForm() {
         this.addEditConsentForm = this.formBuilder.group({
             title: ["", Validators.compose([
                 Validators.required
@@ -67,18 +79,6 @@ export class AddEditConsentFormComponent implements OnInit {
             case 'ITEM_ONE':
                 $event.checked ? this.isItemOneChecked = 'Y' : this.isItemOneChecked = 'N';
                 break;
-            case 'ITEM_TWO':
-                $event.checked ? this.isItemTwoChecked = 'Y' : this.isItemTwoChecked = 'N';
-                break;
-            case 'ITEM_THREE':
-                $event.checked ? this.isItemThreeChecked = 'Y' : this.isItemThreeChecked = 'N';
-                break;
-            case 'ITEM_FOUR':
-                $event.checked ? this.isItemFourChecked = 'Y' : this.isItemFourChecked = 'N';
-                break;
-            case 'ITEM_FIVE':
-                $event.checked ? this.isItemFiveChecked = 'Y' : this.isItemFiveChecked = 'N';
-                break;
         }
     }
 
@@ -88,19 +88,12 @@ export class AddEditConsentFormComponent implements OnInit {
             $event.preventDefault();
         }
 
-        let submitData = Object.assign({}, this.addEditConsentForm.getRawValue());
-        submitData.isItemOneChecked = this.isItemOneChecked;
-        submitData.isItemTwoChecked = this.isItemTwoChecked;
-        submitData.isItemThreeChecked = this.isItemThreeChecked;
-        submitData.isItemFourChecked = this.isItemFourChecked;
-        submitData.isItemFiveChecked = this.isItemFiveChecked;
+        // let submitData = Object.assign({}, this.addEditConsentForm.getRawValue());
+        // submitData.isItemOneChecked = this.isItemOneChecked;
+        //
+        // console.log(submitData);
 
-        console.log(submitData);
 
-        //Fixme : Need to fix image uploading
-/*        const formData: any = new FormData();
-        formData.append("file", this.selectedFile);
-        this.storageService.uploadPDF(formData);*/
     }
 
     isFormValid() {
@@ -124,4 +117,222 @@ export class AddEditConsentFormComponent implements OnInit {
         // @ts-ignore
         this.selectedFile = event.target.files[0];
     }*/
+
+    async onPreviewPDF($event: MouseEvent) {
+        if ($event) {
+            $event.stopPropagation();
+            $event.preventDefault();
+        }
+
+        let formData = Object.assign({}, this.addEditConsentForm.getRawValue());
+
+        let valArray = [];
+        this.additionalInformationArr.forEach((data => {
+            valArray.push(data.value);
+        }) )
+
+        const docDefinition = {
+            content: [
+                {
+                    text: 'Consent Form PDF',
+                    fontSize: 18,
+                    alignment: 'center',
+                    color: '#000000'
+                },
+                {
+                    image: await this.getBase64ImageFromURL(
+                        this.imageSrc
+                    ),
+                    fit: [150, 150],
+                    marginTop: 20
+                },
+                {
+                    text: formData.title,
+                    style: 'sectionHeader',
+                    marginTop: 20
+                },
+                {
+                    text: formData.content,
+                },
+                {
+                    text: 'Additional Details',
+                    style: 'sectionHeader'
+                },
+                {
+                    ul: valArray,
+                },
+            ],
+            footer: {
+                columns: [
+                    {text: this.pdfFooter, alignment: 'center'}
+                ]
+            },
+            styles: {
+                sectionHeader: {
+                    bold: true,
+                    decoration: 'underline',
+                    fontSize: 14,
+                    margin: [0, 15, 0, 15]
+                }
+            }
+        };
+
+        pdfMake.createPdf(docDefinition).open();
+    }
+
+    async onUploadPDF($event: MouseEvent) {
+        if ($event) {
+            $event.stopPropagation();
+            $event.preventDefault();
+        }
+
+        let formData = Object.assign({}, this.addEditConsentForm.getRawValue());
+
+        let valArray = [];
+        this.additionalInformationArr.forEach((data => {
+            valArray.push(data.value);
+        }) )
+
+        const docDefinition = {
+            content: [
+                {
+                    text: 'Consent Form PDF',
+                    fontSize: 18,
+                    alignment: 'center',
+                    color: '#000000'
+                },
+                {
+                    image: await this.getBase64ImageFromURL(
+                        this.imageSrc
+                    ),
+                    fit: [150, 150],
+                    marginTop: 20
+                },
+                {
+                    text: formData.title,
+                    style: 'sectionHeader',
+                    marginTop: 20
+                },
+                {
+                    text: formData.content,
+                },
+                {
+                    text: 'Additional Details',
+                    style: 'sectionHeader'
+                },
+                {
+                    ul: valArray,
+                },
+            ],
+            footer: {
+                columns: [
+                    {text: this.pdfFooter, alignment: 'center'}
+                ]
+            },
+            styles: {
+                sectionHeader: {
+                    bold: true,
+                    decoration: 'underline',
+                    fontSize: 14,
+                    margin: [0, 15, 0, 15]
+                }
+            }
+        };
+
+        const pdfDocGenerator = pdfMake.createPdf(docDefinition);
+        pdfDocGenerator.getBase64((data) => {
+            const request: any = new FormData();
+
+            const byteCharacters = atob(data);
+
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], {type: 'pdf'});
+
+            request.append('file', blob, 'test.pdf');
+
+            this._commonService.uploadPDFFile(request).subscribe((result) => {
+                if (result) {
+                    if (result.status == "SUCCESS") {
+                        this.toastr.success("PDF uploaded successfully!");
+                    } else if (result.status == "FAILED") {
+                        result.appsErrorMessages.forEach((s) => {
+                            this.toastr.error(s.errorMessage);
+                        });
+                    } else {
+                        this.toastr.error("Something went wrong");
+                    }
+                } else {
+                    this.toastr.error("Something went wrong");
+                }
+            });
+        });
+    }
+
+    getBase64ImageFromURL(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.setAttribute('crossOrigin', 'anonymous');
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                const dataURL = canvas.toDataURL('image/png');
+
+                resolve(dataURL);
+            };
+
+            img.onerror = error => {
+                reject(error);
+            };
+
+            img.src = url;
+        });
+    }
+
+    onClickAdditionalInformationAdd($event: MouseEvent) {
+        if ($event) {
+            $event.stopPropagation();
+            $event.preventDefault();
+        }
+
+        const dialogRef = this.dialog.open(AddAdditionalInfoComponent, {
+            width: '70%',
+            panelClass: 'custom-dialog-panel',
+            data: {}
+        });
+
+        const dialogSubs = dialogRef.afterClosed()
+            .subscribe((response) => {
+                if (response) {
+                    if (response.currentIdx == null) {
+                        response.currentIdx = this.idxCount;
+                        this.idxCount++;
+                        this.additionalInformationArr.push(response);
+                    }
+                }
+                dialogSubs.unsubscribe();
+            });
+    }
+
+    onClickRemove($event: MouseEvent, number: number) {
+        if ($event) {
+            $event.stopPropagation();
+            $event.preventDefault();
+        }
+
+        this.additionalInformationArr = this.additionalInformationArr.filter(
+            function (obj) {
+                return obj.currentIdx != number;
+            });
+    }
 }

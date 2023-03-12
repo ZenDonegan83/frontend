@@ -171,7 +171,8 @@
     "number" : "Number",
     "email": "Email",
     "password": "Password",
-    "btn_save": "Save"
+    "btn_upload": "UPLOAD",
+    "btn_preview": "PREVIEW PDF"
   },
   "templates": {
     "btn_actions": [

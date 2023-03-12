@@ -14,13 +14,15 @@ import {ImageCropperModule} from "ngx-image-cropper";
 import {MatButtonModule} from "@angular/material/button";
 import { ConsentFormImageCropperComponentComponent } from './template/consent-form/add-edit-consent-form/consent-form-image-cropper-component/consent-form-image-cropper-component.component';
 import {MatIconModule} from "@angular/material/icon";
+import { AddAdditionalInfoComponent } from './template/consent-form/add-edit-consent-form/add-additional-info/add-additional-info.component';
 
 @NgModule({
     declarations: [
         TemplateComponent,
         AddEditConsentFormComponent,
         ConsentFormImageUploadSectionComponent,
-        ConsentFormImageCropperComponentComponent
+        ConsentFormImageCropperComponentComponent,
+        AddAdditionalInfoComponent
     ],
     imports: [
         CommonModule,

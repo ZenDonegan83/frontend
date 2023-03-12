@@ -152,6 +152,8 @@
 
         "karma-jasmine-html-reporter": "~2.0.0",
 
+        "pdfmake": "^0.1.72",
+
         "protractor": "7.0.0",
 
         "ts-node": "~10.7.0",

@@ -15,4 +15,8 @@ export class CommonService {
   public getFile(file: any): Observable<any> {
     return this.api.getFile("/storage/loadImage/" + file);
   }
+
+  public uploadPDFFile(file: any): Observable<any> {
+    return this.api.uploadFile<any>("/storage/uploadPDF", file);
+  }
 }

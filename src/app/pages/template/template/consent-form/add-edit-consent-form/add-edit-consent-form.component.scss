@@ -47,3 +47,34 @@
   color: #000000;
   text-transform: uppercase;
 }
+
+.additional-info-btn{
+  background:gray 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal 12px/16px Nunito Sans;
+  letter-spacing: 0.14px;
+  color: #fff;
+  text-transform: uppercase;
+  opacity: 1;
+  border: unset;
+  height: 30px;
+  position: relative;
+  left: 6px;
+}
+
+.additional-remove-btn{
+  margin: 8px;
+  background:darkred 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal 12px/16px Nunito Sans;
+  letter-spacing: 0.14px;
+  color: #fff;
+  text-transform: uppercase;
+  opacity: 1;
+  border: unset;
+  height: 30px;
+  position: relative;
+  left: 6px;
+}
